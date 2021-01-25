@@ -1,9 +1,10 @@
 {
-  "name": "baby-logger-project",
+  "name": "",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
@@ -13,24 +14,37 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
   "devDependencies": {
     "concurrently": "^4.1.2",
-    "nodemon": "^1.18.7"
+    "nodemon": "^1.19.4"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.13",
+    "mongodb": "^3.5.6",
+    "mongoose": "^5.9.9",
+    "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
-    "validator": "^13.5.2"
+    "path": "^0.12.7",
+    "react-day-picker": "^7.4.8",
+    "validator": "^13.0.0"
   }
 }
