@@ -18,16 +18,22 @@ export const addNewBaby = babyData => {
     })
 }
 
-export const getBaby = babyData => {
+export const getUserId = babyData => {
+    let userId = "";
     return axios
-    .get('/api/displayBaby', {
+    .get('/api/getUserId', {
     })
     .then(response => {
-        // console.log(response.data);
-        // console.log(userData);  
-        return response.data
+        response.data.map((each) => {
+            if (each.email === babyData) {
+                return userId = each._id
+            }
+        })
+        localStorage.setItem("userId", userId)
+        return userId
     })
     .catch(err => {
         console.log(err);
     })
 }
+

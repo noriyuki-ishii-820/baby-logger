@@ -3,6 +3,9 @@ const router = express.Router();
 
 // Load User model
 const Baby = require("../../models/Baby");
+const User = require("../../models/User");
+
+//routes
 
 router.post('/api/addNewBaby', (req, res) => {
 
@@ -25,6 +28,23 @@ router.post('/api/addNewBaby', (req, res) => {
     .catch(err => {
         console.log(err);
     })
+})
+
+router.get('/api/getUserId', (req, res) => {
+
+    User.find()
+    .then(response => {
+        if (response) {
+            res.json(response)
+        }
+        else {
+            res.status(400).json({ error: "Users do not exist" });
+        }
+    })
+    .catch(err => {
+        res.send('error: ' + err);
+    })
+
 })
     
 module.exports = router;

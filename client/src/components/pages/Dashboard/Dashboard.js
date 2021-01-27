@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import jwt_decode from 'jwt-decode';
 import { Link } from "react-router-dom";
+import { getUserId } from "../../Functions/babyFunctions"
 
 class DashBoard extends Component {
     constructor() {
@@ -21,6 +22,8 @@ class DashBoard extends Component {
             last_name: decoded.last_name,
             email: decoded.email
         })
+        console.log(decoded.email)
+        getUserId(decoded.email);
     }
     
     render() {

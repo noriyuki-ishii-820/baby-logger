@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Return from "../../Return/Return"
 import DayPickerInput from 'react-day-picker/DayPickerInput';
-import {addNewBaby} from "../../Functions/babyFunctions"
+import {addNewBaby } from "../../Functions/babyFunctions"
 
 class addBaby extends Component {
     constructor(props) {
@@ -13,7 +13,7 @@ class addBaby extends Component {
             dob:undefined,
             gender: "boy",
             tagNumber: "",
-            parentUserId: "",
+            parentUserId: localStorage.getItem("userId"),
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
