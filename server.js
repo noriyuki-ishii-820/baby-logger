@@ -16,6 +16,7 @@ const PORT = process.env.PORT || 5001;
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
@@ -31,9 +32,6 @@ app.use(
 );
 
 app.use(express.static("public"));
-// DB Config
-// const MONGODB_URI = process.env.
-// const mongoURI = "mongodb+srv://trilogy:trilogy@cluster0.u8m9s.mongodb.net/mernlogin?retryWrites=true&w=majority";
 
 // Connect to MongoDB
 mongoose.connect( process.env.MONGODB_URI || mongoURI, {
@@ -41,15 +39,7 @@ mongoose.connect( process.env.MONGODB_URI || mongoURI, {
   useFindAndModify: false
 })
 .then(() => console.log("MongoDB successfully connected"))
-.catch(err => console.log(err));
-
-// Connect to MongoDB
-// mongoose.connect( MONGODB_URI || mongoURI, {
-//   useNewUrlParser: true,
-//   useFindAndModify: false
-// })
-// .then(() => console.log("MongoDB successfully connected"))
-// .catch(err => console.log(err));
+.catch(err => console.log("Error", err));
 
 // Passport middleware
 app.use(passport.initialize());
@@ -71,3 +61,4 @@ app.use((req, res, next) => {
 app.listen(PORT, function () {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
+

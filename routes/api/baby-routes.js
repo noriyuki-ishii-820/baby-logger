@@ -1,17 +1,30 @@
-import axios from 'axios';
+const express = require("express");
+const router = express.Router();
 
-//change port
+// Load User model
+const Baby = require("../../models/Baby");
 
-export const addBaby = babyData => {
-    return axios
-    .post('/api/register', {
-        baby_first_name: babyData.first_name,
-        baby_last_name: babyData.last_name,
-        dob: babyData.dob,
-        gender: babyData.gender,
-        tagNumber: babyData.tagNumber
+router.post('/api/addNewBaby', (req, res) => {
+
+    const today = new Date()
+    
+    const babyData = {
+        baby_first_name: req.body.baby_first_name,
+        baby_last_name: req.body.baby_last_name,
+        dob: req.body.dob,
+        gender: req.body.gender,
+        tagNumber: req.body.tagNumber,
+        parentUserId: req.body.parentUserId,
+        created: today
+    }
+
+    Baby.create(babyData)
+    .then(babyInfo => {
+        res.json(babyInfo);
     })
-    .then(res => {
-        console.log('Registered!');
+    .catch(err => {
+        console.log(err);
     })
-}
+})
+    
+module.exports = router;

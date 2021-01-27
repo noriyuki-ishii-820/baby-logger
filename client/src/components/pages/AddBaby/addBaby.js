@@ -1,49 +1,90 @@
-import React, {useState} from 'react'
+import React, {Component} from 'react'
 import Return from "../../Return/Return"
 import DayPickerInput from 'react-day-picker/DayPickerInput';
+import {addNewBaby} from "../../Functions/babyFunctions"
 
-function addBaby() {
-    //const [dob, setDob] = useState([]);
-    // const [baby, setBaby] = useState([
-    //     {
-    //     first_name: "",
-    //     last_name: "",
-    //     dob: "",
-    //     tagNumber: "",
-    //     parentUserId: "",
-    //     }
-    // ])
+class addBaby extends Component {
+    constructor(props) {
+        super(props)
 
-    const onSubmit = (e) => {
-        e.preventDefault();
-        console.log({ [e.target.name]: e.target.value });
+        this.state = {
+            baby_first_name: "",
+            baby_last_name: "",
+            dob:undefined,
+            gender: "boy",
+            tagNumber: "",
+            parentUserId: "",
+        }
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.DateofBithChange = this.DateofBithChange.bind(this);
+        this.onGenderChange = this.onGenderChange.bind(this);
     }
 
+    //dob input from the calender
+    DateofBithChange(day){
+        this.setState({ dob  : day.toLocaleString()})
+    }
+
+    //gender input from options
+    onGenderChange(event){
+        this.setState({ gender: event.target.value})
+    }
+
+    //inputs of the rest of information
+    onChange(event) {
+        this.setState({ [event.target.name]: event.target.value });
+    }
+
+    //submit to Mongo
+    onSubmit = (e) => {
+        e.preventDefault();
+
+        const babyData = {
+            baby_first_name: this.state.baby_first_name,
+            baby_last_name: this.state.baby_last_name,
+            dob: this.state.dob,
+            gender: this.state.gender,
+            tagNumber: this.state.tagNumber,
+            parentUserId: this.state.parentUserId,
+        }
+       
+        console.log(babyData)
+
+        addNewBaby(babyData).then(data => {
+            console.log(data)
+        })
+    }
+
+    render(){
 
     return (
         <div>
              <div className='container'>
                 <div className='row'>
                     <div className='col-md-6 mt-5 mx-auto'>
-                        <form noValidate onSubmit={onSubmit}>
+                        <form noValidate onSubmit={this.onSubmit}>
                             <div className='form-group'>
-                                <label htmlFor='first_name'>First Name</label>
+                                <label htmlFor='baby_first_name'>First Name</label>
                                 <input type='text'
-                                    refs='first_name'
+                                    refs='baby_first_name'
                                     className='form-control'
-                                    name='first_name'
+                                    name='baby_first_name'
                                     placeholder='Enter First Name'
-                                    //value={this.state.first_name}
+                                    value={this.state.baby_first_name}
+                                    onChange={this.onChange}
+
                                 />
                             </div>
                             <div className='form-group'>
-                                <label htmlFor='last_name'>Last Name</label>
+                                <label htmlFor='baby_last_name'>Last Name</label>
                                 <input type='text'
-                                    refs='last_name'
+                                    refs='baby_last_name'
                                     className='form-control'
-                                    name='last_name'
+                                    name='baby_last_name'
                                     placeholder='Enter Last Name'
-                                    //value={this.state.last_name}
+                                    value={this.state.baby_last_name}
+                                    onChange={this.onChange}
                                 />
                             </div>
                             <div className='form-group'>
@@ -54,20 +95,28 @@ function addBaby() {
                                     className='form-control'
                                     name='dob'
                                     placeholder='Choose the birthday'
-                                    //value={this.state.email}            
+                                    value={this.state.dob} 
+                                    onDayChange={this.DateofBithChange}
+                                    dayPickerProps= {{
+                                        todayButton: 'Today',
+                                    }}
                                 />
                             </div>
 
                             <div className='form-group'>
                                 <label htmlFor='email'>Gender</label>
-                                <input type='text'
+                                <select type='text'
                                     refs='gender'
                                     className='form-control'
                                     name='gender'
-                                    placeholder='Enter Email'
-                                    //value={this.state.email}
-                    
-                                />
+                                    placeholder='Enter Gender'
+                                    value={this.state.gender}
+                                    onChange={this.onGenderChange} 
+                                >
+                                    <option value="boy">Boy</option>
+                                    <option value="girl">Girl</option>
+                                    <option value="N/A">Prefer not to mention</option>
+                                </select>
                             </div>
                             <div className='form-group'>
                                 <label htmlFor='password'>Tag Number(if relevant)</label>
@@ -76,7 +125,8 @@ function addBaby() {
                                     className='form-control'
                                     name='tagNumber'
                                     placeholder="Enter the baby's tag number"
-                                    //value={this.state.password}
+                                    value={this.state.tagNumber}
+                                    onChange={this.onChange}
                             
                                 />
                             </div>
@@ -90,6 +140,6 @@ function addBaby() {
             <Return />
         </div>
     )
-}
+}}
 
 export default addBaby

@@ -22,11 +22,13 @@ const BabySchema = new Schema({
   tagNumber: {
     type: String,
     required: true
+  },
+  parentUserId: {
+    type: String,
+    required: false
   }
 });
 
 const Baby = mongoose.model("baby", BabySchema);
 
 module.exports = Baby;
-
-// module.exports = User = mongoose.model("users", UserSchema);
