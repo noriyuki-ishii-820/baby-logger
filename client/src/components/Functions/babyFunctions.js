@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-//change port
+
+// add new baby to the DB
 
 export const addNewBaby = babyData => {
  
@@ -18,6 +19,7 @@ export const addNewBaby = babyData => {
     })
 }
 
+// get the user ID and store in the Local Storage
 export const getUserId = babyData => {
     let userId = "";
     return axios
@@ -37,3 +39,16 @@ export const getUserId = babyData => {
     })
 }
 
+
+//get all the babies in the DB
+export const getBabyList = userData => {
+    return axios
+    .get('/api/displayBabies', {
+    })
+    .then(response => {
+        return response.data
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}

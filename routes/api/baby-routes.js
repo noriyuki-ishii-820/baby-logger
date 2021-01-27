@@ -7,6 +7,7 @@ const User = require("../../models/User");
 
 //routes
 
+// add new baby to the DB
 router.post('/api/addNewBaby', (req, res) => {
 
     const today = new Date()
@@ -30,8 +31,8 @@ router.post('/api/addNewBaby', (req, res) => {
     })
 })
 
+// route to collect the user ID of the one currently logged in 
 router.get('/api/getUserId', (req, res) => {
-
     User.find()
     .then(response => {
         if (response) {
@@ -47,4 +48,23 @@ router.get('/api/getUserId', (req, res) => {
 
 })
     
+// get the Baby List
+router.get('/api/displayBabies', (req, res) => {
+    Baby.find()
+        .then(response => {
+            if (response) {
+                res.json(response)
+            }
+            else {
+                res.status(400).json({ error: "Users do not exist" });
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err);
+        })
+})
+
+
+
+
 module.exports = router;

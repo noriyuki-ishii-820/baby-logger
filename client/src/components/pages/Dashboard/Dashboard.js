@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import jwt_decode from 'jwt-decode';
 import { Link } from "react-router-dom";
-import { getUserId } from "../../Functions/babyFunctions"
+import BabyList from "../../../components/BabyList/BabyList"
+
+import { getUserId, getBabyList } from "../../Functions/babyFunctions"
+
 
 class DashBoard extends Component {
     constructor() {
@@ -10,7 +13,8 @@ class DashBoard extends Component {
             first_name: '',
             last_name: '',
             email: '',
-            password: ''
+            password: '',
+            babyset: [""],
         }
     }
 
@@ -22,11 +26,19 @@ class DashBoard extends Component {
             last_name: decoded.last_name,
             email: decoded.email
         })
-        console.log(decoded.email)
         getUserId(decoded.email);
+        
+        getBabyList().then(data => {
+            this.setState ({
+                babyset: data
+            })
+        })
     }
     
     render() {
+
+        const filteredBabyList = this.state.babyset
+
         return (
             <div className="container-fluid pl-0">
              
@@ -36,6 +48,7 @@ class DashBoard extends Component {
                         </h1>
                         <div>
                             <h3>Choose Baby...</h3>
+                            <BabyList results={filteredBabyList} />
                         </div>
 
                         <Link to="/addBaby">

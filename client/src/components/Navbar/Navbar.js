@@ -6,6 +6,7 @@ class Navbar extends Component {
     logOut(e) {
         e.preventDefault();
         localStorage.removeItem('usertoken');
+        localStorage.removeItem('userId');
         this.props.history.push('/');
     }
     render() {
