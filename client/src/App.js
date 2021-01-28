@@ -7,7 +7,9 @@ import Login from "./components/Login/login";
 import Dashboard from "./components/pages/Dashboard/Dashboard";
 import Profile from "./components/Profile/profile";
 import AddBaby from "./components/pages/AddBaby/addBaby";
-import BabyActions from "./components/pages/BabyActions/BabyActions"
+import BabyActions from "./components/pages/BabyActions/BabyActions";
+import addLog from "./components/pages/AddLog/AddLog";
+import LogData from "./components/pages/LogData/LogData";
 
 import "./App.css";
 
@@ -28,6 +30,8 @@ class App extends Component {
                             <Route exact path="/dashboard" component={Auth(Dashboard)} />
                             <Route exact path="/addBaby" component={AddBaby} />
                             <Route exact path="/babyActions" component={BabyActions} />
+                            <Route exact path="/addLog" component={addLog} />
+                            <Route exact path="/LogData" component={LogData} />
                         </div>
                     </div>
                 </Router>

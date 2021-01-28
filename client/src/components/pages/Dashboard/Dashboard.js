@@ -19,6 +19,7 @@ class DashBoard extends Component {
     }
 
     componentDidMount() {
+        localStorage.removeItem("actionClicked")
         localStorage.removeItem('babyClicked');
         const token = localStorage.usertoken;
         const decoded = jwt_decode(token);
