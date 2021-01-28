@@ -19,6 +19,7 @@ class DashBoard extends Component {
     }
 
     componentDidMount() {
+        localStorage.removeItem('babyClicked');
         const token = localStorage.usertoken;
         const decoded = jwt_decode(token);
         this.setState({
@@ -27,6 +28,7 @@ class DashBoard extends Component {
             email: decoded.email
         })
         getUserId(decoded.email);
+       
         
         getBabyList().then(data => {
             this.setState ({

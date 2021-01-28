@@ -7,6 +7,7 @@ class Navbar extends Component {
         e.preventDefault();
         localStorage.removeItem('usertoken');
         localStorage.removeItem('userId');
+        localStorage.removeItem('babyClicked');
         this.props.history.push('/');
     }
     render() {

@@ -1,7 +1,12 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 function BabyList(props) {
-    console.log(props)
+
+    function storeBaby(each) {
+        localStorage.removeItem("babyClicked")
+        localStorage.setItem("babyClicked", JSON.stringify(each))
+    }
 
     var currentId = localStorage.getItem("userId")
     return (
@@ -11,7 +16,7 @@ function BabyList(props) {
             <ul>
             {props.results.map((each ,i) => {
                 if (each.parentUserId === currentId){
-                return <li key={i}>{each.baby_first_name} {each.parentUserId}</li>
+                return <li key={i} value={each}><Link to="/babyActions" onClick={() => storeBaby(each)}>{each.baby_first_name}</Link> {each.parentUserId}</li>
                 }
             })}
             </ul>
