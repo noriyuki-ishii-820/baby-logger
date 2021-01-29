@@ -1,12 +1,11 @@
 import axios from 'axios';
 
-
 // add new baby to the DB
 
 export const addNewBaby = babyData => {
  
     return axios
-    .post('/api/addNewBaby', {
+    .post('/api/addBaby', {
         baby_first_name: babyData.baby_first_name,
         baby_last_name: babyData.baby_last_name,
         dob: babyData.dob,

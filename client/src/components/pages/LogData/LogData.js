@@ -3,17 +3,20 @@ import Return from "../../Return/Return"
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import moment from 'moment';
 import { TimePicker } from 'antd';
-import 'antd/dist/antd.css';
+import { addLog } from "../../Functions/logFunctions"
 
+import 'antd/dist/antd.css';
 
 class LogData extends Component {
     constructor(props) {
         super(props)
         this.state = {
             date: "",
-            time: "",
+            time: "00:00",
             logCategory: localStorage.getItem("actionClicked"),
             notes: "",
+            babyId:JSON.parse(localStorage.getItem("babyClicked"))._id,
+            parentUserId: JSON.parse(localStorage.getItem("babyClicked")).parentUserId
             //fileAttached: ""
         }
         this.setDate = this.setDate.bind(this);
@@ -21,8 +24,6 @@ class LogData extends Component {
         this.setNotes = this.setNotes.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
-    
-    
 
     setDate(day){
         let date = day.toLocaleString().split(",")
@@ -46,9 +47,15 @@ class LogData extends Component {
             time: this.state.time,
             logCategory: this.state.logCategory,
             notes: this.state.notes,
+            babyId: this.state.babyId,
+            parentUserId:this.state.parentUserId
         }
 
         console.log(logData)
+
+        addLog(logData).then(data => {
+            console.log(data)
+        })
     }
 
     render(){
@@ -85,7 +92,7 @@ class LogData extends Component {
                                     <br />
 
                                     <TimePicker 
-                                        defaultValue={moment('12:08', format)} 
+                                        defaultValue={moment("00:00", format)} 
                                         //value={this.state.time} 
                                         onChange={this.setTime}
                                         format={format} />;

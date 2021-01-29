@@ -3,23 +3,30 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const LogSchema = new Schema({
-  log_category: {
-    type: String,
-    required: true
-  },
   date: {
-    type: Date,
+    type: String,
     required:true,
   },
   time: {
-    type: Date,
+    type: String,
     required:false,
+  },
+  logCategory: {
+    type: String,
+    required: true
   },
   note: {
     type: String,
     required: false
   },
- 
+  babyId: {
+    type: String,
+    required: false
+  },
+  parentUserId: {
+    type: String,
+    required: false
+  },
 });
 
 const Log = mongoose.model("log", LogSchema);
