@@ -29,4 +29,16 @@ router.post('/api/addLog', (req, res) => {
 })
 
 
+// get the logs
+router.get('/api/getLogs', (req, res) => {
+    Log.find()
+        .then(response => {
+            res.json(response)
+        })
+        .catch(err => {
+            res.send('error: ' + err);
+        })
+})
+
+
 module.exports = router;

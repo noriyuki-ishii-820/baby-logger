@@ -10,6 +10,7 @@ import AddBaby from "./components/pages/AddBaby/addBaby";
 import BabyActions from "./components/pages/BabyActions/BabyActions";
 import addLog from "./components/pages/AddLog/AddLog";
 import LogData from "./components/pages/LogData/LogData";
+import allRecords from "./components/pages/AllRecords/AllRecords"
 
 import "./App.css";
 
@@ -32,6 +33,7 @@ class App extends Component {
                             <Route exact path="/babyActions" component={BabyActions} />
                             <Route exact path="/addLog" component={addLog} />
                             <Route exact path="/LogData" component={LogData} />
+                            <Route exact path="/allRecords" component={allRecords} />
                         </div>
                     </div>
                 </Router>

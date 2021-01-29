@@ -10,7 +10,7 @@ function BabyActions() {
         <div>
             <h1>With {babyInfo.baby_first_name}, I would like to...</h1>
             <div>
-                <button>View All Records</button>
+                <button><Link to="/allRecords">View All Records</Link></button>
                 <button><Link to="/addLog">Add a new Log</Link></button>
             </div>
 

@@ -4,8 +4,9 @@ import DayPickerInput from 'react-day-picker/DayPickerInput';
 import moment from 'moment';
 import { TimePicker } from 'antd';
 import { addLog } from "../../Functions/logFunctions"
-
 import 'antd/dist/antd.css';
+
+//this page is where the user inputs the necessary information for logging a new record.
 
 class LogData extends Component {
     constructor(props) {

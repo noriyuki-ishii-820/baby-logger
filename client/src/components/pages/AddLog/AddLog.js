@@ -2,6 +2,8 @@ import React from 'react'
 import Return from "../../Return/Return"
 import { Link } from "react-router-dom";
 
+//this page is where the user picks what category of log he/she wishes to add.
+
 function AddLog() {
     var babyInfo = JSON.parse(localStorage.getItem("babyClicked"));
 
