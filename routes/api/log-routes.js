@@ -40,5 +40,21 @@ router.get('/api/getLogs', (req, res) => {
         })
 })
 
+//delete a log
+
+router.delete("/api/deleteLogs/:id", (req, res) => {
+
+    Log.findOneAndRemove({
+        _id: req.params.id,
+    })
+        .then(response => {
+            console.log("removed successfully")
+            res.json(response)
+        })
+        .catch(err => {
+            res.send('error: ' + err);
+        })
+})
+
 
 module.exports = router;

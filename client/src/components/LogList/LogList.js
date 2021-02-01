@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import {deleteLog} from "../Functions/logFunctions"
 
 import Return from "../Return/Return"
  
@@ -9,6 +10,15 @@ function LogList(props) {
     useEffect(() => {
         setList(props.results)
     })
+
+    function handleDeleteLog(event) {
+        alert("Are you sure to delete this log?")
+        let logId = event.target.attributes.getNamedItem("value").value
+       
+        deleteLog(logId).then(data => {
+            console.log(data)
+        })
+    }
 
     //columns fo the table
     const columns = ["Date", "Time", "logCategory", "Actions"]
@@ -37,7 +47,7 @@ function LogList(props) {
                                 <td>{each.date}</td>
                                 <td>{each.time}</td>
                                 <td>{each.logCategory}</td>
-                                <td><button>Edit</button><button>delete</button></td>
+                                <td><button>Edit</button><button value={each._id} onClick={(e) => handleDeleteLog(e)}>delete</button></td>
                             </tr>
                     }})}
                 </tbody>

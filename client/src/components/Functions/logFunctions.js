@@ -49,3 +49,18 @@ export const getLogs = logData => {
         console.log(err);
     })
 }
+
+//delete a log
+
+export const deleteLog = logId => {
+
+    return axios
+    .delete("/api/deleteLogs/" + logId, {
+    })
+    .then(response => {
+        return response.data
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
