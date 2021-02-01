@@ -18,6 +18,8 @@ function LogList(props) {
         deleteLog(logId).then(data => {
             console.log(data)
         })
+
+        window.location.reload(); 
     }
 
     //columns fo the table
