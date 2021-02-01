@@ -6,7 +6,8 @@ class AllRecords extends Component {
     constructor() {
         super()
         this.state = {
-            logs:[""]
+            logs:[""],
+            search:"",
         }
     }
 
@@ -18,10 +19,19 @@ class AllRecords extends Component {
         })
     }
 
+    handleInputChange = event => {
+        this.setState({search: event.target.value})
+    }
+
     render(){
 
         const babyInfo = JSON.parse(localStorage.getItem("babyClicked"));
-        const logList = this.state.logs
+
+        const sortedList = this.state.logs.filter((item) => {
+            let values = item.date + item.time + item.logCategory;
+            values = JSON.stringify(values).toLowerCase();
+            return values.indexOf(this.state.search.toLowerCase()) !== -1
+          })
 
         return (
             <div>
@@ -36,7 +46,15 @@ class AllRecords extends Component {
                         <li>Tag Number: {babyInfo.tagNumber ? babyInfo.tagNumber : "N/A"}</li>
                     </ul>
                     <h3>Records</h3>
-                    <LogList results={logList}/>    
+                    <input 
+                        class="form-control" 
+                        type="text"
+                        placeholder="Default input" 
+                        value={this.state.search}
+                        onChange={this.handleInputChange}
+                    
+                    />
+                    <LogList results={sortedList}/>    
                 </div>
             </div>
         )

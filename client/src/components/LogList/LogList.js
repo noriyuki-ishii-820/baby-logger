@@ -5,7 +5,6 @@ import Return from "../Return/Return"
  
 function LogList(props) {
     const [list, setList] = useState([])
-    console.log(props.results)
     
     useEffect(() => {
         setList(props.results)
@@ -15,9 +14,7 @@ function LogList(props) {
         alert("Are you sure to delete this log?")
         let logId = event.target.attributes.getNamedItem("value").value
        
-        deleteLog(logId).then(data => {
-            console.log(data)
-        })
+        deleteLog(logId)
 
         window.location.reload(); 
     }
@@ -30,8 +27,6 @@ function LogList(props) {
 
     //load the babyID from the localstorage to get the right set of data
     var thisBabyId = JSON.parse(localStorage.getItem("babyClicked"))._id
-
-
     
     return (
         <div>
@@ -44,6 +39,7 @@ function LogList(props) {
 
                 <tbody>
                     {filteredList.map((each ,i) => {
+                    
                      if (each.babyId === thisBabyId){
                            return <tr key={i}>
                                 <td>{each.date}</td>
