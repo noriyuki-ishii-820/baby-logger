@@ -32,7 +32,6 @@ class LogData extends Component {
     }
 
     setTime(time, timeString){
-        console.log(timeString)
         this.setState({time:timeString})
     }
 
@@ -90,6 +89,7 @@ class LogData extends Component {
                             </div>
                             <div className='form-group'>
                                     <label htmlFor='text'>Time</label>
+                                    <h6>default would be "00:00"</h6>
                                     <br />
 
                                     <TimePicker 
