@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import Return from "../../Return/Return"
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import {addNewBaby } from "../../Functions/babyFunctions"
+import {formatDate,parseDate,} from 'react-day-picker/moment';
+
 
 class addBaby extends Component {
     constructor(props) {
@@ -10,20 +12,20 @@ class addBaby extends Component {
         this.state = {
             baby_first_name: "",
             baby_last_name: "",
-            dob:undefined,
+            dob:"",
             gender: "boy",
             tagNumber: "",
             parentUserId: localStorage.getItem("userId"),
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-        this.DateofBithChange = this.DateofBithChange.bind(this);
+        this.DateofBirthChange = this.DateofBirthChange.bind(this);
         this.onGenderChange = this.onGenderChange.bind(this);
     }
 
-    //dob input from the calender
-    DateofBithChange(day){
-        this.setState({ dob  : day.toLocaleString()})
+    // dob input from the calender
+    DateofBirthChange(day){
+        this.setState({ dob  : day })
     }
 
     //gender input from options
@@ -48,7 +50,6 @@ class addBaby extends Component {
             tagNumber: this.state.tagNumber,
             parentUserId: this.state.parentUserId,
         }
-
         addNewBaby(babyData)
     }
 
@@ -88,12 +89,15 @@ class addBaby extends Component {
                                 <label htmlFor='email'>Date of Birth</label>
                                 <br />
                                 <DayPickerInput
+                                format="M/D/YYYY"
+                                formatDate={formatDate}
+                                parseDate={parseDate} 
                                     refs='dob'
                                     className='form-control'
                                     name='dob'
                                     placeholder='Choose the birthday'
                                     value={this.state.dob} 
-                                    onDayChange={this.DateofBithChange}
+                                    onDayChange={this.DateofBirthChange}
                                     dayPickerProps= {{
                                         todayButton: 'Today',
                                     }}
@@ -110,8 +114,8 @@ class addBaby extends Component {
                                     value={this.state.gender}
                                     onChange={this.onGenderChange} 
                                 >
-                                    <option value="boy">Boy</option>
-                                    <option value="girl">Girl</option>
+                                    <option value="Boy">Boy</option>
+                                    <option value="Girl">Girl</option>
                                     <option value="N/A">Prefer not to mention</option>
                                 </select>
                             </div>

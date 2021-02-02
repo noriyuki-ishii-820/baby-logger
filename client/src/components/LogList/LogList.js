@@ -77,7 +77,7 @@ function LogList(props) {
     }
 
     //columns fo the table
-    const columns = ["Date", "Time", "logCategory", "Actions"]
+    const columns = ["Date", "Time", "Category", "Actions"]
 
     //when loads, the log is displayed in the chronological order 
     const filteredList = list.sort((a,b) => (a.date > b.date) ? 1 : -1)

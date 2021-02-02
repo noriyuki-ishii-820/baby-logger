@@ -5,7 +5,7 @@ import axios from 'axios';
 export const addNewBaby = babyData => {
  
     return axios
-    .post('/api/addBaby', {
+    .post('/api/addNewBaby', {
         baby_first_name: babyData.baby_first_name,
         baby_last_name: babyData.baby_last_name,
         dob: babyData.dob,
@@ -14,7 +14,7 @@ export const addNewBaby = babyData => {
         parentUserId: babyData.parentUserId,
     })
     .then(res => {
-        console.log('Added');
+        console.log('Added : ' + res);
     })
 }
 

@@ -21,7 +21,7 @@ const BabySchema = new Schema({
   },
   tagNumber: {
     type: String,
-    required: true
+    required: false,
   },
   parentUserId: {
     type: String,
