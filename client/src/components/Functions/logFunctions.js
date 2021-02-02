@@ -64,3 +64,24 @@ export const deleteLog = logId => {
         console.log(err);
     })
 }
+
+// updating a log 
+
+export const updateLog = editLog => {
+
+    return axios
+    .put("/api/updateLog/" + editLog._id, {
+        date: editLog.date,
+        time: editLog.time,
+        notes:editLog.notes,
+        logCategory:editLog.logCategory
+    })
+    .then(response => {
+     
+        return response.data
+    })
+    .catch(err => {
+        console.log(err);
+    })
+
+}

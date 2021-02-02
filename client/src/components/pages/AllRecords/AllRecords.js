@@ -47,7 +47,7 @@ class AllRecords extends Component {
                     </ul>
                     <h3>Records</h3>
                     <input 
-                        class="form-control" 
+                        className="form-control" 
                         type="text"
                         placeholder="Default input" 
                         value={this.state.search}

@@ -17,7 +17,15 @@ function BabyList(props) {
             <ul>
             {props.results.map((each ,i) => {
                 if (each.parentUserId === currentId){
-                return <li key={i} value={each}><Link to="/babyActions" onClick={() => storeBaby(each)}>{each.baby_first_name}</Link> {each.parentUserId}</li>
+                return <li key={i} value={each}>
+                            <Link 
+                                to="/babyActions" 
+                                onClick={() => storeBaby(each)}
+                            >
+                                {each.baby_first_name}
+                            </Link> 
+                            {each.parentUserId}
+                        </li>
                 }
             })}
             </ul>

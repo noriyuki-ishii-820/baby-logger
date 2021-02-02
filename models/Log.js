@@ -15,7 +15,7 @@ const LogSchema = new Schema({
     type: String,
     required: true
   },
-  note: {
+  notes: {
     type: String,
     required: false
   },

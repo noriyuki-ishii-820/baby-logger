@@ -48,13 +48,10 @@ class addBaby extends Component {
             tagNumber: this.state.tagNumber,
             parentUserId: this.state.parentUserId,
         }
-       
-        console.log(babyData)
 
-        addNewBaby(babyData).then(data => {
-            console.log(data)
-        })
+        addNewBaby(babyData)
     }
+
 
     render(){
 

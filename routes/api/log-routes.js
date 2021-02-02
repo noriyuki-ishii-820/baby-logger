@@ -56,5 +56,28 @@ router.delete("/api/deleteLogs/:id", (req, res) => {
         })
 })
 
+//updating a log 
+
+router.put("/api/updateLog/:id", (req, res) => {
+
+    const logData = {
+        date: req.body.date,
+        time: req.body.time,
+        logCategory: req.body.logCategory,
+        notes: req.body.notes,
+    }
+
+    Log.findOneAndUpdate({_id:req.params.id}, logData, 
+        {new :true, upsert: true} )
+        .then(response => {
+            console.log(logData)
+            console.log("success")
+            res.json(response)
+        })
+        .catch(err => {
+            res.send('error: ' + err);
+        })
+})
+
 
 module.exports = router;

@@ -1,14 +1,24 @@
 import React, {useState, useEffect} from 'react'
-import ReactDOM from 'react-dom';
-import Modal from 'react-modal';
-import {deleteLog, getLogs} from "../Functions/logFunctions"
+import ReactModal from 'react-modal';
+import {deleteLog, getLogs, updateLog} from "../Functions/logFunctions"
 
 import Return from "../Return/Return"
  
+
 function LogList(props) {
     const [list, setList] = useState([]);
     const [modalIsOpen,setIsOpen] = React.useState(false);
-    const [editLog, setEditLog] = React.useState([]);
+    const [editLog, setEditLog] = React.useState([
+        {
+        babyId: "",
+        date: "",
+        logCategory: "",
+        notes: "",
+        parentUserId: "",
+        time: "",
+        _id: ""
+        }
+    ]);
     
     useEffect(() => {
         setList(props.results)
@@ -16,13 +26,13 @@ function LogList(props) {
 
     // Modal handling
 
+
     function openModal(event) {
         setIsOpen(true);
         let logId = event.target.attributes.getNamedItem("value").value;
         getLogs().then(data => {
             data.map((each) => {
                 if (each._id === logId)
-                    console.log(each)
                     setEditLog(each)
             })})
     }
@@ -30,6 +40,32 @@ function LogList(props) {
     function closeModal(){
         setIsOpen(false);
       }
+
+    // edit handling 
+
+    function updateEditLog(event){
+        setEditLog({...editLog, [event.target.name] : event.target.value });
+    }
+
+    function onSubmit(e){
+       
+        e.preventDefault();
+        // console.log(e.target.attributes.getNamedItem("value").value)
+        // const logId = e.target.attributes.getNamedItem("value").value;
+
+        const logData = {
+            date: editLog.date,
+            time: editLog.time,
+            logCategory: editLog.logCategory,
+            notes: editLog.notes,
+            _id: editLog._id,
+        }
+
+        console.log(logData)
+        updateLog(logData)
+
+        window.location.reload(); 
+    }
 
     // handle the delete button
 
@@ -51,11 +87,13 @@ function LogList(props) {
     
     return (
         <div>
-            <table striped>
+            <table>
                  <thead>
-                     {columns.map((each, i) => {
-                       return <th key={i}>{each}</th>
-                    })}
+                     <tr>
+                        {columns.map((each, i) => {
+                        return <th key={i}>{each}</th>
+                        })}
+                    </tr>
                 </thead>
 
                 <tbody>
@@ -76,29 +114,31 @@ function LogList(props) {
 
             </table>
 
-            <Modal
+            <ReactModal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 contentLabel="Example Modal"
+                ariaHideApp={false}
             >
  
                 <h2>Editing this Log:</h2>
-                    <form>
+                    <form onSubmit={(e) => onSubmit(e)}>
                         <label>Date</label>
-                        <input value={editLog.date}></input>
+                        <input value={editLog.date || ""} name ="date" onChange={updateEditLog}></input>
                         <br/>
                         <label>Time</label>
-                        <input value={editLog.time}></input>
+                        <input value={editLog.time || ""} name="time" onChange={updateEditLog}></input>
                         <br/>
                         <label>Category</label>
-                        <input value={editLog.logCategory}></input>
+                        <input value={editLog.logCategory || ""} name="logCategory" onChange={updateEditLog} ></input>
                         <br/>
                         <label>Notes</label>
-                        <input value={editLog.notes}></input>
-                    </form>
-                    <button>Re-Submit</button>
+                        <input value={editLog.notes || ""} name="notes" onChange={updateEditLog}></input>
+                    
+                    <button value={editLog._id || ""} type='submit'>Edit this Log</button>
                     <button onClick={closeModal}>close</button>
-            </Modal>
+                    </form>
+            </ReactModal>
 
             <Return />
         </div>
