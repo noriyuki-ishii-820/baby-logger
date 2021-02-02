@@ -17,16 +17,13 @@ export const addNewBaby = babyData => {
 
 // get the user ID and store in the Local Storage
 export const getUserId = babyData => {
-    let userId = "";
+ 
     return axios
     .get('/api/getUserId', {
     })
     .then(response => {
-        response.data.map((each) => {
-            if (each.email === babyData) {
-                return userId = each._id
-            }
-        })
+        const thisUser = response.data.filter(each => each.email === babyData)
+        const userId = thisUser[0]._id;
         localStorage.setItem("userId", userId)
         return userId
     })

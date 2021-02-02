@@ -22,8 +22,12 @@ function LogList(props) {
         setList(props.results)
     })
 
-    // Modal handling
+    //load the babyID from the localstorage to get the right set of data
+    
+    var thisBabyId = JSON.parse(localStorage.getItem("babyClicked"))._id
 
+
+    // Modal handling
 
     function openModal(event) {
         setIsOpen(true);
@@ -48,9 +52,7 @@ function LogList(props) {
     function onSubmit(e){
        
         e.preventDefault();
-        // console.log(e.target.attributes.getNamedItem("value").value)
-        // const logId = e.target.attributes.getNamedItem("value").value;
-
+    
         const logData = {
             date: editLog.date,
             time: editLog.time,
@@ -77,11 +79,11 @@ function LogList(props) {
     //columns fo the table
     const columns = ["Date", "Time", "Category", "notes","Actions"]
 
-    //when loads, the log is displayed in the chronological order 
-    const filteredList = list.sort((a,b) => (a.date > b.date) ? 1 : -1)
+    //sorts the list in chronological order 
+    const sortedList = list.sort((a,b) => (a.date > b.date) ? 1 : -1)
 
-    //load the babyID from the localstorage to get the right set of data
-    var thisBabyId = JSON.parse(localStorage.getItem("babyClicked"))._id
+    //filter in the babies with the user's ID
+    const filteredList = sortedList.filter(each => each.babyId === thisBabyId)
     
     return (
         <div>
@@ -95,9 +97,11 @@ function LogList(props) {
                 </thead>
 
                 <tbody>
-                    {filteredList.map((each ,i) => {
+                    {filteredList.length === 0 ?
+                        <div> No data available </div>
+                    :
+                    filteredList.map((each ,i) => {
                     
-                     if (each.babyId === thisBabyId){
                            return <tr key={i}>
                                 <td>{each.date}</td>
                                 <td>{each.time}</td>
@@ -108,7 +112,7 @@ function LogList(props) {
                                     <button value={each._id} onClick={(e) => handleDeleteLog(e)}>delete</button>
                                 </td>
                             </tr>
-                    }})}
+                    })}
                 </tbody>
 
             </table>

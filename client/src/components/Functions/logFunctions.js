@@ -17,25 +17,6 @@ export const addLog = logData => {
     })
 }
 
-export const getUserId = babyData => {
-    let userId = "";
-    return axios
-    .get('/api/getUserId', {
-    })
-    .then(response => {
-        response.data.map((each) => {
-            if (each.email === babyData) {
-                return userId = each._id
-            }
-        })
-        localStorage.setItem("userId", userId)
-        return userId
-    })
-    .catch(err => {
-        console.log(err);
-    })
-}
-
 //get all the logs in the DB
 
 export const getLogs = logData => {

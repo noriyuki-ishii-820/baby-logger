@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import { Link } from "react-router-dom";
 
 
@@ -31,7 +31,7 @@ function BabyList(props) {
                         })}
                     </tr>
                 </thead>
-            </table>
+            
 
             <tbody>
                     {thisUserBaby.map((each, i) => {
@@ -50,7 +50,8 @@ function BabyList(props) {
                                   </tr>
                         
                     })}
-                </tbody>                        
+                </tbody>     
+            </table>                   
         </div>
     )
 }
