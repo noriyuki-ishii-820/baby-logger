@@ -11,8 +11,10 @@ function AddLog() {
 
     function storeAction(each) {
         localStorage.removeItem("actionClicked")
-        localStorage.setItem("actionClicked", JSON.stringify(each))
+        console.log(each)
+        localStorage.setItem("actionClicked", each)
     }
+
 
     return (
         <div>

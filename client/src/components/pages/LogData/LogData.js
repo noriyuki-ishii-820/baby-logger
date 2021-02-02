@@ -17,8 +17,10 @@ class LogData extends Component {
             logCategory: localStorage.getItem("actionClicked"),
             notes: "",
             babyId:JSON.parse(localStorage.getItem("babyClicked"))._id,
-            parentUserId: JSON.parse(localStorage.getItem("babyClicked")).parentUserId
+            parentUserId: JSON.parse(localStorage.getItem("babyClicked")).parentUserId,
             //fileAttached: ""
+            error:false,
+            success:false,
         }
         this.setDate = this.setDate.bind(this);
         this.setTime = this.setTime.bind(this);
@@ -51,29 +53,33 @@ class LogData extends Component {
             parentUserId:this.state.parentUserId
         }
 
-        console.log(logData)
+        if (!logData.date){
+            this.setState({error:true})
+            return
+        }
 
-        addLog(logData).then(data => {
-            console.log(data)
+        addLog(logData).then(value => {
+            this.setState({success:true})
         })
+        
     }
 
     render(){
 
         const format = 'HH:mm';
 
-        var actionInfo = JSON.parse(localStorage.getItem("actionClicked"));
-    
+        var actionInfo = (localStorage.getItem("actionClicked"));
+        var babyName = JSON.parse(localStorage.getItem("babyClicked")).baby_first_name
         return (
         <div>
-            <h1>I would like to add a {actionInfo} :</h1>
+            <h1>I would like to add a {actionInfo} for {babyName}:</h1>
 
             <div className='container'>
                 <div className='row'>
                     <div className='col-md-6 mt-5 mx-auto'>
                         <form onSubmit={this.onSubmit}>
                             <div className='form-group'>
-                                    <label htmlFor='text'>Date</label>
+                                    <label htmlFor='text'>Date <span>*Required</span></label>
                                     <br />
                                     <DayPickerInput
                                         refs='date'
@@ -88,7 +94,7 @@ class LogData extends Component {
                                     />
                             </div>
                             <div className='form-group'>
-                                    <label htmlFor='text'>Time</label>
+                                    <label htmlFor='text'>Time <span>*Optional</span></label>
                                     <h6>default would be "00:00"</h6>
                                     <br />
 
@@ -100,13 +106,13 @@ class LogData extends Component {
                             </div>
 
                             <div className='form-group'>
-                                    <label htmlFor='text'>Notes</label>
+                                    <label htmlFor='text'>Notes <span>*Optional</span></label>
                                     <br />
                                     <input
                                         refs='notes'
                                         //className='form-control'
                                         name='notes'
-                                        placeholder='Enter any notes (e.g. reference numbers, extra information, future references, etc.)'
+                                        placeholder='Enter any notes (e.g. any important things to remember, reference numbers, extra information, future references, etc.)'
                                         value={this.state.notes} 
                                         onChange={this.setNotes}
                                         
@@ -120,8 +126,23 @@ class LogData extends Component {
 
                             <button type='submit'>Submit!</button>
                         </form>
-
-
+                    
+                        {this.state.error ? 
+                         <div>
+                             <h5>Error!</h5>
+                             <h6>Please make sure the required field (Date) is filled.</h6>
+                        </div>
+                        :
+                        null
+                        }
+                        {this.state.success ? 
+                         <div>
+                             <h5>Success!</h5>
+                             <h6>The log has been successfull saved!</h6>
+                        </div>
+                        :
+                        null
+                        }
 
                     </div>
                 </div>

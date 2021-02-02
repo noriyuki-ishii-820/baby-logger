@@ -125,22 +125,22 @@ function LogList(props) {
             >
  
                 <h2>Editing this Log:</h2>
-                    <form onSubmit={(e) => onSubmit(e)}>
-                        <label>Date</label>
-                        <input value={editLog.date || ""} name ="date" onChange={updateEditLog}></input>
-                        <br/>
-                        <label>Time</label>
-                        <input value={editLog.time || ""} name="time" onChange={updateEditLog}></input>
-                        <br/>
-                        <label>Category</label>
-                        <input value={editLog.logCategory || ""} name="logCategory" onChange={updateEditLog} ></input>
-                        <br/>
-                        <label>Notes</label>
-                        <input value={editLog.notes || ""} name="notes" onChange={updateEditLog}></input>
-                    
+                <form onSubmit={(e) => onSubmit(e)}>
+                    <label>Date</label>
+                    <input value={editLog.date || ""} name ="date" onChange={updateEditLog}></input>
+                    <br/>
+                    <label>Time</label>
+                    <input value={editLog.time || ""} name="time" onChange={updateEditLog}></input>
+                    <br/>
+                    <label>Category</label>
+                    <input value={editLog.logCategory || ""} name="logCategory" onChange={updateEditLog} ></input>
+                    <br/>
+                    <label>Notes</label>
+                    <input value={editLog.notes || ""} name="notes" onChange={updateEditLog}></input>
+                
                     <button value={editLog._id || ""} type='submit'>Edit this Log</button>
                     <button onClick={closeModal}>close</button>
-                    </form>
+                </form>
             </ReactModal>
 
         
