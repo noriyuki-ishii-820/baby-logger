@@ -1,8 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import ReactModal from 'react-modal';
 import {deleteLog, getLogs, updateLog} from "../Functions/logFunctions"
-
-import Return from "../Return/Return"
  
 
 function LogList(props) {
@@ -77,7 +75,7 @@ function LogList(props) {
     }
 
     //columns fo the table
-    const columns = ["Date", "Time", "Category", "Actions"]
+    const columns = ["Date", "Time", "Category", "notes","Actions"]
 
     //when loads, the log is displayed in the chronological order 
     const filteredList = list.sort((a,b) => (a.date > b.date) ? 1 : -1)
@@ -104,6 +102,7 @@ function LogList(props) {
                                 <td>{each.date}</td>
                                 <td>{each.time}</td>
                                 <td>{each.logCategory}</td>
+                                <td>{each.notes}</td>
                                 <td>
                                     <button value={each._id} onClick={(e) => openModal(e)} >Edit</button>
                                     <button value={each._id} onClick={(e) => handleDeleteLog(e)}>delete</button>
@@ -140,7 +139,7 @@ function LogList(props) {
                     </form>
             </ReactModal>
 
-            <Return />
+        
         </div>
     )
 }

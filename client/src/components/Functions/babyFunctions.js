@@ -13,9 +13,6 @@ export const addNewBaby = babyData => {
         tagNumber: babyData.tagNumber,
         parentUserId: babyData.parentUserId,
     })
-    .then(res => {
-        console.log('Added : ' + res);
-    })
 }
 
 // get the user ID and store in the Local Storage

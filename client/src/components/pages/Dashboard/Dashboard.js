@@ -50,7 +50,7 @@ class DashBoard extends Component {
                              Welcome { this.state.first_name } { this.state.last_name }
                         </h1>
                         <div>
-                            <h3>Choose Baby...</h3>
+                            <h3>Choose a Baby...</h3>
                             <BabyList results={filteredBabyList} />
                         </div>
 

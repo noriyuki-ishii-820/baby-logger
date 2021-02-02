@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { getLogs } from "../../Functions/logFunctions"
 import LogList from "../../LogList/LogList"
+import Return from "../../Return/Return"
 
 class AllRecords extends Component {
     constructor() {
@@ -25,7 +26,6 @@ class AllRecords extends Component {
 
     render(){
 
-        const babyInfo = JSON.parse(localStorage.getItem("babyClicked"));
 
         const sortedList = this.state.logs.filter((item) => {
             let values = item.date + item.time + item.logCategory;
@@ -37,14 +37,7 @@ class AllRecords extends Component {
             <div>
                 <h1>All Records</h1>
                 <div>
-                    <h3>Baby Information</h3>
-                    <ul>
-                        <li>First Name: {babyInfo.baby_first_name}</li>
-                        <li>Last Name: {babyInfo.baby_last_name}</li>
-                        <li>Date of Birth: {babyInfo.dob.slice(0,10)}</li>
-                        <li>Gender: {babyInfo.gender}</li>
-                        <li>Tag Number: {babyInfo.tagNumber ? babyInfo.tagNumber : "N/A"}</li>
-                    </ul>
+                   
                     <h3>Records</h3>
                     <input 
                         className="form-control" 
@@ -56,6 +49,7 @@ class AllRecords extends Component {
                     />
                     <LogList results={sortedList}/>    
                 </div>
+                <Return />
             </div>
         )
 }}

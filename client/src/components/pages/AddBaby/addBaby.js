@@ -16,6 +16,8 @@ class addBaby extends Component {
             gender: "boy",
             tagNumber: "",
             parentUserId: localStorage.getItem("userId"),
+            error:false,
+            added:false,
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -41,6 +43,7 @@ class addBaby extends Component {
     //submit to Mongo
     onSubmit = (e) => {
         e.preventDefault();
+  
 
         const babyData = {
             baby_first_name: this.state.baby_first_name,
@@ -50,20 +53,29 @@ class addBaby extends Component {
             tagNumber: this.state.tagNumber,
             parentUserId: this.state.parentUserId,
         }
-        addNewBaby(babyData)
-    }
 
+        if(!babyData.baby_first_name || !babyData.baby_last_name || !babyData.dob){
+            this.setState({error:true})
+            return
+        }
+
+        addNewBaby(babyData).then(res => {
+            this.setState({added:true})
+        })
+        
+    }
 
     render(){
 
     return (
         <div>
              <div className='container'>
+                 <h1>Adding a Baby</h1>
                 <div className='row'>
                     <div className='col-md-6 mt-5 mx-auto'>
                         <form noValidate onSubmit={this.onSubmit}>
                             <div className='form-group'>
-                                <label htmlFor='baby_first_name'>First Name</label>
+                                <label htmlFor='baby_first_name'>First Name <span>*Required</span></label>
                                 <input type='text'
                                     refs='baby_first_name'
                                     className='form-control'
@@ -75,7 +87,7 @@ class addBaby extends Component {
                                 />
                             </div>
                             <div className='form-group'>
-                                <label htmlFor='baby_last_name'>Last Name</label>
+                                <label htmlFor='baby_last_name'>Last Name <span>*Required</span></label>
                                 <input type='text'
                                     refs='baby_last_name'
                                     className='form-control'
@@ -86,7 +98,7 @@ class addBaby extends Component {
                                 />
                             </div>
                             <div className='form-group'>
-                                <label htmlFor='email'>Date of Birth</label>
+                                <label htmlFor='email'>Date of Birth <span>*Required</span></label>
                                 <br />
                                 <DayPickerInput
                                 format="M/D/YYYY"
@@ -105,7 +117,7 @@ class addBaby extends Component {
                             </div>
 
                             <div className='form-group'>
-                                <label htmlFor='email'>Gender</label>
+                                <label htmlFor='email'>Gender <span>*Required</span></label>
                                 <select type='text'
                                     refs='gender'
                                     className='form-control'
@@ -120,7 +132,7 @@ class addBaby extends Component {
                                 </select>
                             </div>
                             <div className='form-group'>
-                                <label htmlFor='password'>Tag Number(if relevant)</label>
+                                <label htmlFor='password'>Tag Number <span>*optional</span></label>
                                 <input type='number'
                                     refs='number'
                                     className='form-control'
@@ -135,6 +147,22 @@ class addBaby extends Component {
                                 Add
                             </button>
                         </form>
+                        {this.state.error ? 
+                            <div>
+                            <h5>Error</h5>
+                            <h6>please make sure all the required fields are filled.</h6>
+                            </div> 
+                            : 
+                            null
+                        }
+                        {this.state.added ? 
+                            <div>
+                            <h5>Successfull Added!</h5>
+                            <h6>You can now start adding information from the Dashboard.</h6>
+                            </div> 
+                            : 
+                            null
+                        }
                     </div>
                 </div>
             </div>
