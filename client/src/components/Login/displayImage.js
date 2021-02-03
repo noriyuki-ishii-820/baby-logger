@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import "./displayImage.css"
 
 function DisplayImage() {
     const [number, setNumber] = useState("");
@@ -30,8 +31,8 @@ function DisplayImage() {
     var imageUrl = images[`${number}`]
 
     return (
-        <div>
-             <img src={imageUrl && imageUrl.url} alt="" />  
+        <div className="app-image-box">
+             <img className="app-image" src={imageUrl && imageUrl.url} alt="" />  
         </div>
     )
 }

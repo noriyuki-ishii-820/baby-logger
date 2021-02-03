@@ -1,5 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+.appName {
+    display:flex;
+    align-items:center;
+}
+
+.appName h1 {
+    font-family:'Righteous', cursive;
+    font-size:30px;
+    margin:0;
+    padding:0;
+}
+
+.appName span {
+    font-size:30px;
+    margin:0;
+    padding:0;
+}
+
 .navbar {
-    background-color:#3f0f84;
+    background-color: #5DB075;
+    display:flex;
+    align-items:center
 }
 
 .btn {

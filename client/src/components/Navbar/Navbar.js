@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import "./style.css";
+import "./navbar.css";
 
 class Navbar extends Component {
     logOut(e) {
@@ -13,12 +13,12 @@ class Navbar extends Component {
     render() {
         const loginRegLink = (
             <ul className='navbar-nav list-group list-group-horizontal'>
-                <li>
+                <li className="nav-item">
                     <Link className='btn btn-sm active mr-1 mb-1' to='/login'>
                         Login
                     </Link>
                 </li>
-                <li>
+                <li className="nav-item">
                     <Link className='btn btn-sm active' to='/register'>
                         Register
                     </Link>
@@ -26,16 +26,13 @@ class Navbar extends Component {
             </ul>
         )
         const userLink = (
-            <ul className='navbar-nav list-group list-group-horizontal'>　
-                <li>
+            <ul className=' navbar-nav list-group list-group-horizontal'>　
+                <li className="nav-item">
                     <Link className='btn btn-sm active mr-1 mb-1' to='/dashboard'>
                         Dashboard
                     </Link>
                 </li>
-                <li>
-                    {/* <a href="/" rel='noopener noreferrer' onClick={this.logOut.bind(this)}>
-                        Logout
-                    </a> */}
+                <li className="nav-item">
                     <button className="btn btn-sm active" id="logoutBtn" data-toggle="modal" data-target="#logoutModal" onClick={this.logOut.bind(this)}>
                         <div>Logout</div>
                     </button>
@@ -43,9 +40,19 @@ class Navbar extends Component {
             </ul>
         )
         return (
-            <nav className='navbar navbar-expand-lg'>
-                <div className='collapse navbar-collapse d-flex justify-content-end' id='navbar1'>
-                    {localStorage.usertoken ? userLink : loginRegLink}
+            <nav className='navbar navbar-light navbar-expand-lg'>
+               <div className="container-fluid">
+                    <div className="appName">
+                        <span className="material-icons">child_care</span>
+                        <h1>Baby Logger</h1>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                         <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div className='collapse navbar-collapse justify-content-end' id="navbarSupportedContent">
+                        {localStorage.usertoken ? userLink : loginRegLink}
+                    </div>
                 </div>
             </nav>
         )

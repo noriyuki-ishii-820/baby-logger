@@ -12,8 +12,6 @@ import addLog from "./components/pages/AddLog/AddLog";
 import LogData from "./components/pages/LogData/LogData";
 import allRecords from "./components/pages/AllRecords/AllRecords"
 
-import "./App.css";
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Auth from './Auth';
 
