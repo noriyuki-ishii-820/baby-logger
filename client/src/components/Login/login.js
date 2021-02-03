@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { loginUser } from '../Functions/userFunctions';
-
+import DisplayImage from "./displayImage"
 
 class Login extends Component {
     constructor() {
@@ -41,6 +41,10 @@ class Login extends Component {
                     <div className='col-md-6 mt-5 mx-auto'>
                         <form noValidate onSubmit={ this.onSubmit }>
                             <h1 className='h3 mb-3 font-weight normal'>Please Sign in</h1>
+
+                            <DisplayImage />
+
+
                             <div className='form-group'>
                                 <label htmlFor='email'>Email Address</label>
                                 <input type='email'

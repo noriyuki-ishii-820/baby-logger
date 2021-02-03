@@ -19,8 +19,8 @@ function LogList(props) {
     ]);
     
     useEffect(() => {
-        setList(props.results)
-    })
+        return setList(props.results)
+    },[props.results])
 
     //load the babyID from the localstorage to get the right set of data
     

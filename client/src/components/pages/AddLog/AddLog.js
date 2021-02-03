@@ -1,6 +1,6 @@
 import React from 'react'
-import Return from "../../Return/Return"
 import { Link } from "react-router-dom";
+import ReturnToBabyActions from '../../Return/ReturnToBabyActions';
 
 //this page is where the user picks what category of log he/she wishes to add.
 
@@ -28,7 +28,7 @@ function AddLog() {
         </div>
 
 
-         <Return />
+         <ReturnToBabyActions />
         </div>
     )
 }

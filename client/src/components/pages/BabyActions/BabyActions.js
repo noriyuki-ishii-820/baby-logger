@@ -8,7 +8,7 @@ function BabyActions() {
 
     return (
         <div>
-            <h1>Hello {babyInfo.baby_first_name} !</h1>
+            <h1>Say Hello to {babyInfo.baby_first_name} !</h1>
             <h3>Baby Information</h3>
                     <ul>
                         <li>First Name: {babyInfo.baby_first_name}</li>

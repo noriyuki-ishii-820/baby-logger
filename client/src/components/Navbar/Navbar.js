@@ -20,7 +20,7 @@ class Navbar extends Component {
                 </li>
                 <li>
                     <Link className='btn btn-sm active' to='/register'>
-                        Sign Up
+                        Register
                     </Link>
                 </li>
             </ul>

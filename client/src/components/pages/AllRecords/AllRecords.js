@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { getLogs } from "../../Functions/logFunctions"
 import LogList from "../../LogList/LogList"
-import Return from "../../Return/Return"
+import ReturnToBabyActions from '../../Return/ReturnToBabyActions'
 
 class AllRecords extends Component {
     constructor() {
@@ -49,7 +49,7 @@ class AllRecords extends Component {
                     />
                     <LogList results={sortedList}/>    
                 </div>
-                <Return />
+                <ReturnToBabyActions />
             </div>
         )
 }}
