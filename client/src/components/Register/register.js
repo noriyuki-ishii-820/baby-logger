@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { registerUser, getUsers } from '../Functions/userFunctions';
 
 class Register extends Component {
@@ -9,7 +10,8 @@ class Register extends Component {
             last_name: '',
             email: '',
             password: '',
-            errors: {}
+            errors: {},
+            success: false,
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -99,7 +101,8 @@ class Register extends Component {
                 }).filter(item => { return item; })[0];
                 if (!destination) {
                     registerUser(userData).then(res => {
-                        this.props.history.push('/login')
+                        this.setState({success:true})
+                        //this.props.history.push('/login')
                     })
                     console.log("Form submitted");
                 }
@@ -173,6 +176,12 @@ class Register extends Component {
                                 Register
                             </button>
                         </form>
+                        {this.state.success ?
+                        <div>
+                            <h4>Registration is successful. Please <Link to="/login">log-in</Link> now.</h4>
+                        </div>
+                        :
+                        null}
                     </div>
                 </div>
             </div>

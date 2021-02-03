@@ -8,4 +8,6 @@
     margin:auto;
     height:300px;
     border-radius:30%;
+    filter: drop-shadow(3px 3px  #001f3f);
+    border:1px solid  #001f3f;
 }
