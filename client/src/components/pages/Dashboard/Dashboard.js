@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import jwt_decode from 'jwt-decode';
 import { Link } from "react-router-dom";
 import BabyList from "../../../components/BabyList/BabyList"
+import "./Dashboard.css"
 
 import { getUserId, getBabyList } from "../../Functions/babyFunctions"
 
@@ -45,19 +46,18 @@ class DashBoard extends Component {
         return (
             <div className="container-fluid pl-0">
              
-                    <div>
-                        <h1>
-                             Welcome { this.state.first_name } { this.state.last_name }
-                        </h1>
-                        <div>
-                            <h3>Choose a Baby...</h3>
-                            <BabyList results={filteredBabyList} />
-                        </div>
+                
 
+                        <h1 className="dashboard-welcome">Welcome { this.state.first_name } { this.state.last_name }</h1>
+                        <h3>Choose a Baby...</h3>
+                    
+                        
+                        <BabyList results={filteredBabyList} />
+                        
                         <Link to="/addBaby">
                             <button>Add New Baby</button>
                         </Link>
-                    </div>
+                  
             </div>
         );
     } 

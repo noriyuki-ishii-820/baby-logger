@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import "./BabyList.css"
 
 
 function BabyList(props) {
@@ -23,8 +24,8 @@ function BabyList(props) {
     return (
         <div>
 
-            <table>
-                <thead>
+            <table className="table table-striped table-hover babyList">
+                <thead class="thead-dark">
                     <tr>
                         {columns.map((each, i) => {
                             return <th key={i}>{each}</th>
