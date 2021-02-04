@@ -45,3 +45,16 @@ export const getBabyList = userData => {
         console.log(err);
     })
 }
+
+export const deleteBaby = babyId => {
+
+    return axios
+    .delete("/api/deleteBaby/" + babyId, {
+    })
+    .then(response => {
+        return response.data
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}

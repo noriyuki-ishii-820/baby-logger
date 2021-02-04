@@ -13,7 +13,7 @@ class addBaby extends Component {
             baby_first_name: "",
             baby_last_name: "",
             dob:"",
-            gender: "boy",
+            gender: "Boy",
             tagNumber: "",
             parentUserId: localStorage.getItem("userId"),
             error:false,

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import "./BabyList.css"
+import { deleteBaby } from "../Functions/babyFunctions"
 
 
 function BabyList(props) {
@@ -17,16 +18,23 @@ function BabyList(props) {
     }
 
     //column for the baby table
-    const columns = ["Name", "Date of Birth", "Gender", "Tag Number" ]
+    const columns = ["Name", "Date of Birth (YYYY-MM-DD)", "Gender", "Tag Number", "Actions" ]
 
-    
+    //delete baby info
+    function handleDeleteLog(event) {
+        alert("Are you sure to delete this log?")
+        let logId = event.target.attributes.getNamedItem("value").value
+        console.log(logId)
+        deleteBaby(logId)
+        window.location.reload(); 
+    }
     
     return (
         <div>
 
-            <table className="table table-striped babyList">
+            <table className="table babyList">
             
-                <thead class="thead-dark">
+                <thead>
                     <tr>
                         {columns.map((each, i) => {
                             return <th className="tableHead" key={i}>{each}</th>
@@ -35,7 +43,7 @@ function BabyList(props) {
                 </thead>
             
 
-            <tbody>
+                <tbody>
                     {thisUserBaby.map((each, i) => {
                            return <tr key={i}>
                                     <td>
@@ -48,6 +56,10 @@ function BabyList(props) {
                                     <td>{each.dob.toLocaleString().slice(0,10)}</td>
                                     <td>{each.gender}</td>
                                     <td>{each.tagNumber}</td>
+                                    <td>
+                                        <button>Edit</button>
+                                        <button value={each._id} onClick={(e) => handleDeleteLog(e)}>Delete</button>
+                                    </td>
                             
                                   </tr>
                         

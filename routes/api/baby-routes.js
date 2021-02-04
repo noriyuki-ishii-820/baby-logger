@@ -64,7 +64,19 @@ router.get('/api/displayBabies', (req, res) => {
         })
 })
 
+//delete baby
+router.delete("/api/deleteBaby/:id", (req, res) => {
 
-
+    Baby.findOneAndRemove({
+        _id: req.params.id,
+    })
+        .then(response => {
+            console.log("removed successfully")
+            res.json(response)
+        })
+        .catch(err => {
+            res.send('error: ' + err);
+        })
+})
 
 module.exports = router;
