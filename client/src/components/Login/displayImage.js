@@ -25,7 +25,7 @@ function DisplayImage() {
     useEffect(() => {
         const randomNumber = Math.floor(Math.random() * images.length);
         setNumber(randomNumber)
-    },[])
+    },[images.length])
 
     //generate the image number for the img src 
     var imageUrl = images[`${number}`]

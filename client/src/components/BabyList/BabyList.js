@@ -77,10 +77,10 @@ function BabyList(props) {
             dob: editBaby.dob,
             gender: editBaby.gender,
             tagNumber: editBaby.tagNumber,
-            parentUserId: editBaby.parentUserId,
             _id: editBaby._id
         }
         updateBaby(babyData)
+        alert("Success!")
         window.location.reload(); 
     }
 

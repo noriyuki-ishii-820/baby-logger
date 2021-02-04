@@ -94,8 +94,6 @@ router.put("/api/updateBaby/:id", (req, res) => {
     Baby.findOneAndUpdate({_id:req.params.id}, BabyData, 
         {new :true, upsert: true} )
         .then(response => {
-            console.log(logData)
-            console.log("success")
             res.json(response)
         })
         .catch(err => {
