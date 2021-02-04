@@ -23,12 +23,9 @@ function LogList(props) {
     },[props.results])
 
     //load the babyID from the localstorage to get the right set of data
-    
     var thisBabyId = JSON.parse(localStorage.getItem("babyClicked"))._id
 
-
     // Modal handling
-
     function openModal(event) {
         setIsOpen(true);
         let logId = event.target.attributes.getNamedItem("value").value;
@@ -44,15 +41,14 @@ function LogList(props) {
       }
 
     // edit handling 
-
     function updateEditLog(event){
         setEditLog({...editLog, [event.target.name] : event.target.value });
     }
 
+
+    // edit log info
     function onSubmit(e){
-       
         e.preventDefault();
-    
         const logData = {
             date: editLog.date,
             time: editLog.time,
@@ -60,15 +56,11 @@ function LogList(props) {
             notes: editLog.notes,
             _id: editLog._id,
         }
-
-        console.log(logData)
         updateLog(logData)
-
         window.location.reload(); 
     }
 
     // handle the delete button
-
     function handleDeleteLog(event) {
         alert("Are you sure to delete this log?")
         let logId = event.target.attributes.getNamedItem("value").value
@@ -120,7 +112,6 @@ function LogList(props) {
             <ReactModal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
-                contentLabel="Example Modal"
                 ariaHideApp={false}
             >
  

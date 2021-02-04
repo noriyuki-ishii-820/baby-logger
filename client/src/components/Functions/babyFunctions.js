@@ -46,6 +46,7 @@ export const getBabyList = userData => {
     })
 }
 
+// delete baby from the list
 export const deleteBaby = babyId => {
 
     return axios
@@ -57,4 +58,27 @@ export const deleteBaby = babyId => {
     .catch(err => {
         console.log(err);
     })
+}
+
+// updating a baby
+
+export const updateBaby = editBaby => {
+
+    return axios
+    .put("/api/updateBaby/" + editBaby._id, {
+
+        baby_first_name: editBaby.baby_first_name,
+        baby_last_name: editBaby.baby_last_name,
+        dob: editBaby.dob,
+        gender: editBaby.gender,
+        tagNumber: editBaby.tagNumber,
+    })
+    .then(response => {
+     
+        return response.data
+    })
+    .catch(err => {
+        console.log(err);
+    })
+
 }

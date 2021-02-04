@@ -79,4 +79,29 @@ router.delete("/api/deleteBaby/:id", (req, res) => {
         })
 })
 
+//updating a baby
+
+router.put("/api/updateBaby/:id", (req, res) => {
+
+    const BabyData = {
+        baby_first_name: req.body.baby_first_name,
+        baby_last_name: req.body.baby_last_name,
+        dob: req.body.dob,
+        gender: req.body.gender,
+        tagNumber: req.body.tagNumber,
+    }
+
+    Baby.findOneAndUpdate({_id:req.params.id}, BabyData, 
+        {new :true, upsert: true} )
+        .then(response => {
+            console.log(logData)
+            console.log("success")
+            res.json(response)
+        })
+        .catch(err => {
+            res.send('error: ' + err);
+        })
+})
+
+
 module.exports = router;
