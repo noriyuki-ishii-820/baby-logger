@@ -24,11 +24,12 @@ function BabyList(props) {
     return (
         <div>
 
-            <table className="table table-striped table-hover babyList">
+            <table className="table table-striped babyList">
+            
                 <thead class="thead-dark">
                     <tr>
                         {columns.map((each, i) => {
-                            return <th key={i}>{each}</th>
+                            return <th className="tableHead" key={i}>{each}</th>
                         })}
                     </tr>
                 </thead>

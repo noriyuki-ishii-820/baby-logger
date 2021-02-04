@@ -1,4 +1,8 @@
 .babyList {
-    width: 80% !important;
+    width: 70% !important;
     margin: auto;
+}
+
+table {
+    text-align:center;
 }

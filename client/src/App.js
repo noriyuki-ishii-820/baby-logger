@@ -13,7 +13,11 @@ import LogData from "./components/pages/LogData/LogData";
 import allRecords from "./components/pages/AllRecords/AllRecords"
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "antd/dist/antd.css";
+import "./App.css"
+
 import Auth from './Auth';
+
 
 class App extends Component {
     render() {

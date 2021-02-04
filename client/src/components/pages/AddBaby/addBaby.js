@@ -3,7 +3,7 @@ import Return from "../../Return/Return"
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import {addNewBaby } from "../../Functions/babyFunctions"
 import {formatDate,parseDate,} from 'react-day-picker/moment';
-
+import 'react-day-picker/lib/style.css';
 
 class addBaby extends Component {
     constructor(props) {

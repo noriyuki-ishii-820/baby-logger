@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { loginUser } from '../Functions/userFunctions';
 import DisplayImage from "./displayImage"
-import "./login.css"
+import "./css/login.css"
 
 class Login extends Component {
     constructor() {
@@ -41,7 +41,10 @@ class Login extends Component {
                 <div className='row'>
                     <div className='col-md-6 mt-5 mx-auto'>
                         <form noValidate onSubmit={ this.onSubmit }>
-                            <h1 className='h3 mb-3 font-weight normal pleaseSignIn'>Welcome to Baby Logger! Please Log in</h1>
+                            <div className="pleaseSignIn">
+                                <h1 className='h3 mb-3 font-weight normal'>Welcome to Baby Logger!</h1>
+                                <h1 className='h3 mb-3 font-weight normal'>Please Log in</h1>
+                            </div>
                             <DisplayImage />
                             <div className='form-group'>
                                 <label htmlFor='email'>Email Address</label>

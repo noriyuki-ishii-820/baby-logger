@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import "./displayImage.css"
+import "./css/displayImage.css"
 
 function DisplayImage() {
     const [number, setNumber] = useState("");
