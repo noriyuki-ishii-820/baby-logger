@@ -27,7 +27,8 @@ class addBaby extends Component {
 
     // dob input from the calender
     DateofBirthChange(day){
-        this.setState({ dob  : day })
+        let dayFormatted = day.toLocaleString().slice(0,10)
+        this.setState({ dob  : dayFormatted })
     }
 
     //gender input from options

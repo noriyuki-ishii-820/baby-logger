@@ -2,3 +2,25 @@
     text-align: center;
     margin:30px 0 !important;
 }
+
+.ChooseABaby {
+    width: 70% !important;
+    margin: auto;
+}
+
+.edit-btn {
+    background-color: #001f3f !important;
+    color: #FFFFFF !important;
+    border:none;
+}
+
+.delete-btn {
+    background-color:#5DB075 !important;
+    color: #FFFFFF !important;
+    border:none;
+}
+
+
+.babyList-actions button {
+    margin: 0 2px;
+}

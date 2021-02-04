@@ -4,7 +4,6 @@ import ReactModal from 'react-modal';
 import "./BabyList.css"
 import { deleteBaby, getBabyList, updateBaby } from "../Functions/babyFunctions"
 
-
 function BabyList(props) {
     const [list, setList] = useState([]);
     const [modalIsOpen,setIsOpen] = useState(false);
@@ -37,11 +36,13 @@ function BabyList(props) {
     }
 
     //column for the baby table
-    const columns = ["Name", "Date of Birth (YYYY-MM-DD)", "Gender", "Tag Number", "Actions" ]
+    const columns = ["Name", "Date of Birth (D-M-Y)", "Gender", "Tag Number", "Actions" ]
 
     //delete baby info
     function handleDelete(event) {
-        alert("Are you sure to delete this log?")
+        if(!window.confirm("Are you sure to delete this log?")){
+           return false 
+        }
         let babyId = event.target.attributes.getNamedItem("value").value
         deleteBaby(babyId)
         window.location.reload(); 
@@ -65,6 +66,7 @@ function BabyList(props) {
      // edit handling 
      function updateBabyInfo(event){
         setEditBaby({... editBaby, [event.target.name] : event.target.value });
+        console.log(editBaby)
     }
 
     //submit baby info
@@ -110,9 +112,10 @@ function BabyList(props) {
                                     <td>{each.dob.toLocaleString().slice(0,10)}</td>
                                     <td>{each.gender}</td>
                                     <td>{each.tagNumber}</td>
-                                    <td>
-                                        <button value={each._id} onClick={(e) => openModal(e)}>Edit</button>
-                                        <button value={each._id} onClick={(e) => handleDelete(e)}>Delete</button>
+                                    <td className="babyList-actions">
+                                        <button value={each._id} onClick={(e) => openModal(e)} className="edit-btn btn-sm active">edit</button>
+                                        <button value={each._id} onClick={handleDelete} className="delete-btn btn-sm active">delete</button>
+                                       
                                     </td>
                             
                                   </tr>
@@ -130,7 +133,7 @@ function BabyList(props) {
                 <h2>Editing this Baby:</h2>
          
                 <form onSubmit={(e) => onSubmit(e)}>
-                    <label>First Name</label>
+                    <label>First Name   </label>
                     <input value={editBaby.baby_first_name || ""} name ="baby_first_name" onChange={updateBabyInfo}></input>
                     <br/>
                     <label>Last Name</label>
@@ -139,13 +142,17 @@ function BabyList(props) {
                     <label>Date of Birth</label>
                     <input value={editBaby.dob|| ""} name="dob" onChange={updateBabyInfo} ></input>
                     <br/>
-                    <label>Gender</label>
-                    <input value={editBaby.gender|| ""} name="gender" onChange={updateBabyInfo}></input>
+                    <label htmlFor="gender">Gender</label>
+                    <select value={editBaby.gender} name="gender" onChange={updateBabyInfo}>
+                        <option value="Boy">Boy</option>
+                        <option value="Girl">Girl</option>
+                        <option value="N/A">Prefer not to say</option>
+                    </select>
                     <br/>
                     <label>Tag Number</label>
                     <input value={editBaby.tagNumber|| ""} name="tagNumber" onChange={updateBabyInfo}></input>
                     
-                    <button value={editBaby._id || ""} type='submit'>Edit this Baby</button>
+                    <button value={editBaby._id || ""} type='submit'>Submit</button>
                     <button onClick={closeModal}>close</button>
                 </form>
             </ReactModal>

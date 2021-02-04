@@ -69,7 +69,7 @@ function LogList(props) {
     }
 
     //columns fo the table
-    const columns = ["Date", "Time", "Category", "notes","Actions"]
+    const columns = ["Date", "Time", "Category", "Notes","Actions"]
 
     //sorts the list in chronological order 
     const sortedList = list.sort((a,b) => (a.date > b.date) ? 1 : -1)
@@ -90,7 +90,7 @@ function LogList(props) {
 
                 <tbody>
                     {filteredList.length === 0 ?
-                        <div> No data available </div>
+                        <tr><td> No data available </td></tr>
                     :
                     filteredList.map((each ,i) => {
                     
@@ -125,6 +125,17 @@ function LogList(props) {
                     <br/>
                     <label>Category</label>
                     <input value={editLog.logCategory || ""} name="logCategory" onChange={updateEditLog} ></input>
+                    <br/>
+
+                    <label htmlFor="logCategory">Category</label>
+                    <select value ={editLog.logCategory} name="logCategory" onChange={updateEditLog}>
+                        {columns.map((each, i) => {
+                            if(each === "Actions"){
+                                return false
+                            }
+                            return <option value={each} key={i}>{each}</option>
+                        })}
+                    </select>
                     <br/>
                     <label>Notes</label>
                     <input value={editLog.notes || ""} name="notes" onChange={updateEditLog}></input>
