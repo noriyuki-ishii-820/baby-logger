@@ -103,7 +103,8 @@ class LogData extends Component {
                                         defaultValue={moment("00:00", format)} 
                                         //value={this.state.time} 
                                         onChange={this.setTime}
-                                        format={format} />
+                                        format={format} 
+                                    />
                             </div>
 
                             <div className='form-group'>

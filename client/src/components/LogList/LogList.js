@@ -1,9 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import ReactModal from 'react-modal';
 import {deleteLog, getLogs, updateLog} from "../Functions/logFunctions"
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import { TimePicker } from 'antd';
+import moment from 'moment';
+import 'antd/dist/antd.css';
 import "./LogList.css"
 
 function LogList(props) {
+    const format = 'HH:mm';
     const [list, setList] = useState([]);
     const [modalIsOpen,setIsOpen] = React.useState(false);
     const [editLog, setEditLog] = React.useState([
@@ -41,10 +46,20 @@ function LogList(props) {
       }
 
     // edit handling 
+
     function updateEditLog(event){
         setEditLog({...editLog, [event.target.name] : event.target.value });
     }
 
+    function setTime(time, timeString){
+        console.log(timeString)
+        setEditLog({...editLog, time:timeString})
+    }
+
+    function setDate(day){
+        let date = day.toLocaleString().split(",")
+        setEditLog({...editLog, date : date[0]})
+    }
 
     // edit log info
     function onSubmit(e){
@@ -119,10 +134,21 @@ function LogList(props) {
                 <h2>Editing this Log:</h2>
                 <form onSubmit={(e) => onSubmit(e)}>
                     <label>Date</label>
-                    <input value={editLog.date || ""} name ="date" onChange={updateEditLog}></input>
+                         <DayPickerInput
+                            refs='date'
+                            className='form-control'
+                            name='date'
+                            placeholder='Enter the date of this event'
+                            value={editLog.date} 
+                            onDayChange={setDate}
+                        />
                     <br/>
                     <label>Time</label>
-                    <input value={editLog.time || ""} name="time" onChange={updateEditLog}></input>
+                        <TimePicker 
+                            value={moment("'" + editLog.time + "'", format)} 
+                            onChange={setTime}
+                            format={format} 
+                        />
                     <br/> 
                     <label htmlFor="logCategory">Category</label>
                     <select value ={editLog.logCategory} name="logCategory" onChange={updateEditLog}>
