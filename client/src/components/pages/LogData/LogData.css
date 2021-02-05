@@ -1,0 +1,28 @@
+.DayPickerInput input {
+    width:250px;
+    height:35px;
+}
+
+.ant-picker-input input {
+    height:35px;
+}
+
+#LogDataNoteInput {
+    width:400px;
+    height:300px;
+}
+
+.submitBtnDiv {
+    display:flex;
+    justify-content: center;
+}
+
+.submitBtnDiv button {
+    margin: 30px auto;
+    background-color: #B05D5D !important;
+    color: #FFFFFF !important;
+    border:none;
+
+    width:200px;
+    height:50px;
+}

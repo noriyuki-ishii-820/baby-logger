@@ -7,8 +7,8 @@ function BabyActions() {
     var babyInfo = JSON.parse(localStorage.getItem("babyClicked"));
 
     return (
-        <div>
-            <h1>Say Hello to {babyInfo.baby_first_name} !</h1>
+        <div className="container">
+            <h1 className="top-header">Say Hello to {babyInfo.baby_first_name} !</h1>
             <h3>Baby Information</h3>
                     <ul>
                         <li>First Name: {babyInfo.baby_first_name}</li>

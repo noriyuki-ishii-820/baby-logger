@@ -6,6 +6,8 @@ import { TimePicker } from 'antd';
 import { addLog } from "../../Functions/logFunctions"
 import 'antd/dist/antd.css';
 
+import "./LogData.css"
+
 //this page is where the user inputs the necessary information for logging a new record.
 
 class LogData extends Component {
@@ -72,14 +74,14 @@ class LogData extends Component {
         var babyName = JSON.parse(localStorage.getItem("babyClicked")).baby_first_name
         return (
         <div>
-            <h1>I would like to add a {actionInfo} for {babyName}:</h1>
+            <h1 className="top-header">I would like to add a {actionInfo} for {babyName}:</h1>
 
             <div className='container'>
                 <div className='row'>
                     <div className='col-md-6 mt-5 mx-auto'>
                         <form onSubmit={this.onSubmit}>
                             <div className='form-group'>
-                                    <label htmlFor='text'>Date <span>*Required</span></label>
+                                    <label htmlFor='text'>Date <span className="required">*Required</span></label>
                                     <br />
                                     <DayPickerInput
                                         refs='date'
@@ -94,25 +96,25 @@ class LogData extends Component {
                                     />
                             </div>
                             <div className='form-group'>
-                                    <label htmlFor='text'>Time <span>*Optional</span></label>
-                                    <h6>default would be "00:00"</h6>
+                                    <label htmlFor='text'>Time <span>*Optional / default would be "00:00" </span></label>
                                     <br />
 
                                     <TimePicker 
                                         defaultValue={moment("00:00", format)} 
                                         //value={this.state.time} 
                                         onChange={this.setTime}
-                                        format={format} />;
+                                        format={format} />
                             </div>
 
                             <div className='form-group'>
                                     <label htmlFor='text'>Notes <span>*Optional</span></label>
                                     <br />
-                                    <input
+                                    <textarea
                                         refs='notes'
-                                        //className='form-control'
+                                        className='form-control'
+                                        id="LogDataNoteInput"
                                         name='notes'
-                                        placeholder='Enter any notes (e.g. any important things to remember, reference numbers, extra information, future references, etc.)'
+                                        placeholder='Enter any notes (e.g. any important things to remember, location, name of the doctor, reference numbers, extra information, future references, etc.)'
                                         value={this.state.notes} 
                                         onChange={this.setNotes}
                                         
@@ -123,8 +125,9 @@ class LogData extends Component {
                             <div>
                                 <h4>add file uploads if time allows</h4>
                             </div>
-
-                            <button type='submit'>Submit!</button>
+                            <div className="submitBtnDiv">
+                            <button type='submit' className="btn-sm active">Submit!</button>
+                            </div>
                         </form>
                     
                         {this.state.error ? 

@@ -1,0 +1,26 @@
+#searchBar {
+    width:30% !important;
+    margin: 30px auto;
+}
+
+.AllRecordsSearchBtn {
+    text-align: center;
+}
+
+.AllRecordsSearchBtn button, .AllRecordsSearchBtn input {
+    display:inline-block; 
+    margin: 0 5px;  
+}
+
+.AllRecordsSearchBtn button {
+    background-color: #B05D5D !important;
+    border:none;
+}
+
+.AllRecordsSearchBtn button a {
+    color: #FFFFFF !important;
+}
+.AllRecordsSearchBtn button a:hover {
+    text-decoration:none;
+
+}

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import ReactModal from 'react-modal';
 import {deleteLog, getLogs, updateLog} from "../Functions/logFunctions"
- 
+import "./LogList.css"
 
 function LogList(props) {
     const [list, setList] = useState([]);
@@ -68,8 +68,9 @@ function LogList(props) {
         window.location.reload(); 
     }
 
-    //columns fo the table
+    //array for table and editing
     const columns = ["Date", "Time", "Category", "Notes","Actions"]
+    const category = ["Meal", "Nap", "Doctor's Appointment", "Vaccination"]
 
     //sorts the list in chronological order 
     const sortedList = list.sort((a,b) => (a.date > b.date) ? 1 : -1)
@@ -90,7 +91,7 @@ function LogList(props) {
 
                 <tbody>
                     {filteredList.length === 0 ?
-                        <tr><td> No data available </td></tr>
+                        <tr><td colSpan="5" className="noDataAvailable"> No data available </td></tr>
                     :
                     filteredList.map((each ,i) => {
                     
@@ -99,9 +100,9 @@ function LogList(props) {
                                 <td>{each.time}</td>
                                 <td>{each.logCategory}</td>
                                 <td>{each.notes}</td>
-                                <td>
-                                    <button value={each._id} onClick={(e) => openModal(e)} >Edit</button>
-                                    <button value={each._id} onClick={(e) => handleDeleteLog(e)}>delete</button>
+                                <td className="logList-Actions">
+                                    <button value={each._id} onClick={(e) => openModal(e)} className="edit-btn btn-sm active">Edit</button>
+                                    <button value={each._id} onClick={(e) => handleDeleteLog(e)} className="delete-btn btn-sm active">delete</button>
                                 </td>
                             </tr>
                     })}
@@ -122,24 +123,17 @@ function LogList(props) {
                     <br/>
                     <label>Time</label>
                     <input value={editLog.time || ""} name="time" onChange={updateEditLog}></input>
-                    <br/>
-                    <label>Category</label>
-                    <input value={editLog.logCategory || ""} name="logCategory" onChange={updateEditLog} ></input>
-                    <br/>
-
+                    <br/> 
                     <label htmlFor="logCategory">Category</label>
                     <select value ={editLog.logCategory} name="logCategory" onChange={updateEditLog}>
-                        {columns.map((each, i) => {
-                            if(each === "Actions"){
-                                return false
-                            }
+                        {category.map((each, i) => {
                             return <option value={each} key={i}>{each}</option>
                         })}
                     </select>
                     <br/>
                     <label>Notes</label>
                     <input value={editLog.notes || ""} name="notes" onChange={updateEditLog}></input>
-                
+            
                     <button value={editLog._id || ""} type='submit'>Edit this Log</button>
                     <button onClick={closeModal}>close</button>
                 </form>

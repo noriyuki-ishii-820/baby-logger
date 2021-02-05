@@ -1,0 +1,28 @@
+.AddLogBtn-List {
+  text-align:center;
+}
+
+.AddLogBtn-List li button {
+    font-size:30px;
+    padding:10px 0;
+    margin: 20px 0;
+    background-color:#5DB075;
+    width:300px;
+    color:white !important;
+    border:2px #2B633B  solid;
+    border-radius:20px;
+    box-shadow: 3px 3px #2B633B;
+}
+
+.AddLogBtn-List li button a {
+    color:white;
+}
+
+.AddLogBtn-List li button:hover {
+    background-color:#2B633B;
+    box-shadow: 3px 3px #5DB075;
+}
+
+.AddLogBtn-List li button a:hover {
+    text-decoration:none;
+}

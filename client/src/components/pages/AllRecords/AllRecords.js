@@ -1,7 +1,10 @@
 import React, {Component} from 'react'
+import { Link } from "react-router-dom";
 import { getLogs } from "../../Functions/logFunctions"
 import LogList from "../../LogList/LogList"
 import ReturnToBabyActions from '../../Return/ReturnToBabyActions'
+
+import "./AllRecords.css"
 
 class AllRecords extends Component {
     constructor() {
@@ -26,7 +29,6 @@ class AllRecords extends Component {
 
     render(){
 
-
         const sortedList = this.state.logs.filter((item) => {
             let values = item.date + item.time + item.logCategory;
             values = JSON.stringify(values).toLowerCase();
@@ -35,18 +37,19 @@ class AllRecords extends Component {
 
         return (
             <div>
-                <h1>All Records</h1>
-                <div>
-                   
-                    <h3>Records</h3>
+                <h1 className="top-header">All Records</h1>
+                <div className="AllRecordsSearchBtn">
                     <input 
                         className="form-control" 
+                        id="searchBar"
                         type="text"
-                        placeholder="Default input" 
+                        placeholder="Search by date, time or category." 
                         value={this.state.search}
                         onChange={this.handleInputChange}
-                    
                     />
+                    <button className="btn-sm"><Link to="/addLog">Add New</Link></button>
+                </div>
+                <div>
                     <LogList results={sortedList}/>    
                 </div>
                 <ReturnToBabyActions />

@@ -1,26 +1,19 @@
-.dashboard-welcome {
-    text-align: center;
-    margin:30px 0 !important;
-}
-
 .ChooseABaby {
     width: 70% !important;
     margin: auto;
 }
 
-.edit-btn {
-    background-color: #001f3f !important;
-    color: #FFFFFF !important;
-    border:none;
+.AddNewBabyBtnBox {
+    display:flex;
+    justify-content: center;
 }
 
-.delete-btn {
-    background-color:#5DB075 !important;
+.AddNewBabyBtn {
+    background-color: #B05D5D !important;
     color: #FFFFFF !important;
     border:none;
-}
-
-
-.babyList-actions button {
-    margin: 0 2px;
+    margin:50px auto 0;
+    width:200px;
+    height:50px;
+    font-size:30px;
 }

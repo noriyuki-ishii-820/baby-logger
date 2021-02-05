@@ -4,6 +4,7 @@ import DayPickerInput from 'react-day-picker/DayPickerInput';
 import {addNewBaby } from "../../Functions/babyFunctions"
 import {formatDate,parseDate,} from 'react-day-picker/moment';
 import 'react-day-picker/lib/style.css';
+import "./AddBaby.css"
 
 class addBaby extends Component {
     constructor(props) {
@@ -71,12 +72,12 @@ class addBaby extends Component {
     return (
         <div>
              <div className='container'>
-                 <h1>Adding a Baby</h1>
+                 <h1 className="top-header">Adding a Baby</h1>
                 <div className='row'>
                     <div className='col-md-6 mt-5 mx-auto'>
                         <form noValidate onSubmit={this.onSubmit}>
                             <div className='form-group'>
-                                <label htmlFor='baby_first_name'>First Name <span>*Required</span></label>
+                                <label htmlFor='baby_first_name'>First Name <span className="required">*Required</span></label>
                                 <input type='text'
                                     refs='baby_first_name'
                                     className='form-control'
@@ -88,7 +89,7 @@ class addBaby extends Component {
                                 />
                             </div>
                             <div className='form-group'>
-                                <label htmlFor='baby_last_name'>Last Name <span>*Required</span></label>
+                                <label htmlFor='baby_last_name'>Last Name <span className="required">*Required</span></label>
                                 <input type='text'
                                     refs='baby_last_name'
                                     className='form-control'
@@ -99,7 +100,7 @@ class addBaby extends Component {
                                 />
                             </div>
                             <div className='form-group'>
-                                <label htmlFor='email'>Date of Birth <span>*Required</span></label>
+                                <label htmlFor='email'>Date of Birth <span className="required">*Required</span></label>
                                 <br />
                                 <DayPickerInput
                                 format="M/D/YYYY"
@@ -118,7 +119,7 @@ class addBaby extends Component {
                             </div>
 
                             <div className='form-group'>
-                                <label htmlFor='email'>Gender <span>*Required</span></label>
+                                <label htmlFor='email'>Gender <span className="required">*Required</span></label>
                                 <select type='text'
                                     refs='gender'
                                     className='form-control'

@@ -1,2 +1,11 @@
 @import '~@fullcalendar/core/main.css';
 @import '~@fullcalendar/daygrid/main.css';
+
+.top-header {
+    text-align: center;
+    margin:50px 0 !important;
+}
+
+.required {
+    color:#632121;
+}

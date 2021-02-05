@@ -114,7 +114,7 @@ function BabyList(props) {
                                     <td>{each.tagNumber}</td>
                                     <td className="babyList-actions">
                                         <button value={each._id} onClick={(e) => openModal(e)} className="edit-btn btn-sm active">edit</button>
-                                        <button value={each._id} onClick={handleDelete} className="delete-btn btn-sm active">delete</button>
+                                        <button value={each._id} onClick={(e) => handleDelete(e)} className="delete-btn btn-sm active">delete</button>
                                        
                                     </td>
                             

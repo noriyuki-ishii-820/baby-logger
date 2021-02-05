@@ -45,19 +45,14 @@ class DashBoard extends Component {
 
         return (
             <div className="container-fluid pl-0">
-             
-                
-
-                        <h1 className="dashboard-welcome">Welcome { this.state.first_name } { this.state.last_name }</h1>
+                        <h1 className="top-header">Welcome { this.state.first_name } { this.state.last_name }</h1>
                         <h3 className="ChooseABaby">Choose a Baby...</h3>
-                    
-                        
                         <BabyList results={filteredBabyList} />
-                        
-                        <Link to="/addBaby">
-                            <button>Add New Baby</button>
-                        </Link>
-                  
+                        <div className="AddNewBabyBtnBox">
+                            <Link to="/addBaby">
+                                <button className="btn-sm active AddNewBabyBtn">Add New Baby</button>
+                            </Link>
+                        </div>
             </div>
         );
     } 

@@ -20,3 +20,19 @@ table {
     margin: 0 10px;
 }
 
+.edit-btn {
+    background-color: #001f3f !important;
+    color: #FFFFFF !important;
+    border:none;
+}
+
+.delete-btn {
+    background-color:#5DB075 !important;
+    color: #FFFFFF !important;
+    border:none;
+}
+
+
+.babyList-actions button {
+    margin: 0 2px;
+}
