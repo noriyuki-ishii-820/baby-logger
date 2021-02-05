@@ -8,7 +8,7 @@ function Return() {
     return (
         <div className="return">
             <Link to="/dashboard">
-                <button>Return</button>
+                <button className="btn-sm active">Return</button>
             </Link>
         </div>
     )
