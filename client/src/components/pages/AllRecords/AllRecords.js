@@ -30,7 +30,7 @@ class AllRecords extends Component {
     render(){
 
         const sortedList = this.state.logs.filter((item) => {
-            let values = item.date + item.time + item.logCategory;
+            let values = item.date + item.time + item.logCategory + item.notes;
             values = JSON.stringify(values).toLowerCase();
             return values.indexOf(this.state.search.toLowerCase()) !== -1
           })
@@ -43,7 +43,7 @@ class AllRecords extends Component {
                         className="form-control" 
                         id="searchBar"
                         type="text"
-                        placeholder="Search by date, time or category." 
+                        placeholder="Search by date, time, category or notes." 
                         value={this.state.search}
                         onChange={this.handleInputChange}
                     />
