@@ -79,6 +79,14 @@ class LogData extends Component {
             <div className='container'>
                 <div className='row'>
                     <div className='col-md-6 mt-5 mx-auto'>
+                    {this.state.error ? 
+                         <div className="ErrorDiv">
+                             <h5>Error!</h5>
+                             <h6>Please make sure the required field (Date) is filled.</h6>
+                        </div>
+                        :
+                        null
+                        }
                         <form onSubmit={this.onSubmit}>
                             <div className='form-group'>
                                     <label htmlFor='text'>Date <span className="required">*Required</span></label>
@@ -131,18 +139,11 @@ class LogData extends Component {
                             </div>
                         </form>
                     
-                        {this.state.error ? 
-                         <div>
-                             <h5>Error!</h5>
-                             <h6>Please make sure the required field (Date) is filled.</h6>
-                        </div>
-                        :
-                        null
-                        }
+                        
                         {this.state.success ? 
-                         <div>
+                         <div className="SuccessDiv">
                              <h5>Success!</h5>
-                             <h6>The log has been successfull saved!</h6>
+                             <h6>The log has been successfully saved!</h6>
                         </div>
                         :
                         null

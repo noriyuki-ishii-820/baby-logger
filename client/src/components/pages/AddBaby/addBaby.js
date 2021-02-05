@@ -73,8 +73,17 @@ class addBaby extends Component {
         <div>
              <div className='container'>
                  <h1 className="top-header">Adding a Baby</h1>
+            
                 <div className='row'>
                     <div className='col-md-6 mt-5 mx-auto'>
+                    {this.state.error ? 
+                            <div className="ErrorDiv">
+                                <h5>Error</h5>
+                                <h6>please make sure all the required fields are filled.</h6>
+                            </div> 
+                            : 
+                            null
+                        }
                         <form noValidate onSubmit={this.onSubmit}>
                             <div className='form-group'>
                                 <label htmlFor='baby_first_name'>First Name <span className="required">*Required</span></label>
@@ -149,17 +158,9 @@ class addBaby extends Component {
                                 Add
                             </button>
                         </form>
-                        {this.state.error ? 
-                            <div>
-                            <h5>Error</h5>
-                            <h6>please make sure all the required fields are filled.</h6>
-                            </div> 
-                            : 
-                            null
-                        }
                         {this.state.added ? 
-                            <div>
-                            <h5>Successfull Added!</h5>
+                            <div className="SuccessDiv">
+                            <h5>Successfully Added!</h5>
                             <h6>You can now start adding information from the Dashboard.</h6>
                             </div> 
                             : 

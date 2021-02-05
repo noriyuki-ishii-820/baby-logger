@@ -8,7 +8,8 @@ class Login extends Component {
         super()
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            login:true,
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -29,8 +30,9 @@ class Login extends Component {
                 this.props.history.push('/dashboard');
             }
             else {
-                alert("Incorrect email or password")
-                console.log("Incorrect email or password");
+                this.setState({ login : false });
+                // alert("Incorrect email or password")
+                // console.log("Incorrect email or password");
             }
         })
     }
@@ -46,6 +48,13 @@ class Login extends Component {
                                 <h1 className='h3 mb-3 font-weight normal'>Please Log in</h1>
                             </div>
                             <DisplayImage />
+                            {this.state.login ? null :
+                            <div className="ErrorDiv">
+                                <h5>Error: please check the following:</h5>
+                                <h6>- Incorrect email or password.</h6>
+                                <h6>- The account does not exist.</h6>
+                            </div>
+                            }
                             <div className='form-group'>
                                 <label htmlFor='email'>Email Address</label>
                                 <input type='email'
