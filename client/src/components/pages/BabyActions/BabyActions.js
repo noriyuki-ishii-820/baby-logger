@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import Return from "../../Return/Return"
 
+import "./BabyActions.css"
+
 function BabyActions() {
     
     var babyInfo = JSON.parse(localStorage.getItem("babyClicked"));
@@ -19,8 +21,10 @@ function BabyActions() {
                     </ul>
             <div>
             <h3>Actions</h3>
-                <button><Link to="/allRecords">View All Records</Link></button>
-                <button><Link to="/addLog">Add a new Log</Link></button>
+                <div className="BabyActionsBtnDiv">
+                    <button className="btn-sm active baby-actions-view-btn"><Link to="/allRecords">View All Records</Link></button>
+                    <button className="btn-sm active baby-actions-add-btn"><Link to="/addLog">Add a new Log</Link></button>
+                </div>
             </div>
         <Return />
         </div>

@@ -80,7 +80,7 @@ function LogList(props) {
     
     return (
         <div>
-            <table>
+            <table className="table babyList">
                  <thead>
                      <tr>
                         {columns.map((each, i) => {

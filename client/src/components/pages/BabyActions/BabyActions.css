@@ -1,0 +1,22 @@
+.BabyActionsBtnDiv button {
+    margin: 0 5px;
+}
+
+.BabyActionsBtnDiv button a {
+    color: #FFFFFF !important;
+    font-size: 15px;
+} 
+
+.BabyActionsBtnDiv button a:hover {
+    text-decoration: none;
+}
+
+.baby-actions-view-btn {
+    background-color: #001f3f !important;
+    border:none;
+}
+
+.baby-actions-add-btn {
+    background-color:#5DB075 !important;
+    border:none;
+}
