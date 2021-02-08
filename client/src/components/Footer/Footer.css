@@ -1,0 +1,14 @@
+.footer {
+    width: 100% !important;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #001f3f !important;
+    height:30px;
+    line-height:30px;
+    margin-top:50px;
+}
+
+.footer h6 {
+    color: #FFFFFF !important;
+}

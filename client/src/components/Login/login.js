@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Footer from "../Footer/Footer"
 import { loginUser } from '../Functions/userFunctions';
 import DisplayImage from "./displayImage"
 import "./css/login.css"
@@ -39,6 +40,7 @@ class Login extends Component {
 
     render() {
         return (
+            <div>
             <div className='container'>
                 <div className='row'>
                     <div className='col-md-6 mt-5 mx-auto'>
@@ -81,6 +83,9 @@ class Login extends Component {
                         </form>
                     </div>
                 </div>
+             
+            </div>
+            <Footer />
             </div>
         )
     }

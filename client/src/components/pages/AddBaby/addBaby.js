@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
+import Footer from "../../Footer/Footer"
 import Return from "../../Return/Return"
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import {addNewBaby } from "../../Functions/babyFunctions"
 import {formatDate,parseDate,} from 'react-day-picker/moment';
+import { Link } from "react-router-dom";
 import 'react-day-picker/lib/style.css';
 import "./AddBaby.css"
 
@@ -161,7 +163,7 @@ class addBaby extends Component {
                         {this.state.added ? 
                             <div className="SuccessDiv">
                             <h5>Successfully Added!</h5>
-                            <h6>You can now start adding information from the Dashboard.</h6>
+                            <h6>You can now start adding information from the <Link to="/dashboard">Dashboard.</Link></h6>
                             </div> 
                             : 
                             null
@@ -170,6 +172,7 @@ class addBaby extends Component {
                 </div>
             </div>
             <Return />
+            <Footer />
         </div>
     )
 }}

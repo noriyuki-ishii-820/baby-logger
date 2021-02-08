@@ -7,7 +7,7 @@ function ReturnToBabyActions() {
     return (
         <div className="return">
             <Link to="/BabyActions">
-                <button>Return</button>
+                <button className="btn-sm active">Return</button>
             </Link>
         </div>
     )

@@ -1,3 +1,12 @@
+.LogList {
+   width: 70%;
+   table-layout: fixed;
+}
+
+.LogList tbody tr td {
+    word-wrap: break-word;  
+}
+
 .edit-btn {
     background-color: #001f3f !important;
     color: #FFFFFF !important;

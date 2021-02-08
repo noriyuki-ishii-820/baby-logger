@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import ReturnToBabyActions from "../../Return/ReturnToBabyActions"
+import Footer from "../../Footer/Footer"
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import moment from 'moment';
 import { TimePicker } from 'antd';
@@ -154,6 +155,7 @@ class LogData extends Component {
             </div>
 
             <ReturnToBabyActions />
+            <Footer />
         </div>
     )
     }

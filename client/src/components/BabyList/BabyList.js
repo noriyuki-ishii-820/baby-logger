@@ -152,8 +152,8 @@ function BabyList(props) {
                     <label>Tag Number</label>
                     <input value={editBaby.tagNumber|| ""} name="tagNumber" onChange={updateBabyInfo}></input>
                     
-                    <button value={editBaby._id || ""} type='submit'>Submit</button>
-                    <button onClick={closeModal}>close</button>
+                    <button value={editBaby._id || ""} type='submit' className="edit-btn btn-sm active">Submit</button>
+                    <button onClick={closeModal} className="delete-btn btn-sm active">close</button>
                 </form>
             </ReactModal>
         </div>

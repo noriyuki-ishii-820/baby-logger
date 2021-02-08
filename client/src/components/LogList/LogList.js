@@ -95,7 +95,7 @@ function LogList(props) {
     
     return (
         <div>
-            <table className="table babyList">
+            <table className="table LogList">
                  <thead>
                      <tr>
                         {columns.map((each, i) => {
@@ -160,8 +160,8 @@ function LogList(props) {
                     <label>Notes</label>
                     <input value={editLog.notes || ""} name="notes" onChange={updateEditLog}></input>
             
-                    <button value={editLog._id || ""} type='submit'>Edit this Log</button>
-                    <button onClick={closeModal}>close</button>
+                    <button value={editLog._id || ""} type='submit' className="edit-btn btn-sm active">Edit this Log</button>
+                    <button onClick={closeModal} className="delete-btn btn-sm active">close</button>
                 </form>
             </ReactModal>
 

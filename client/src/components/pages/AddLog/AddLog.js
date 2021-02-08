@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from "../../Footer/Footer"
 import { Link } from "react-router-dom";
 import ReturnToBabyActions from '../../Return/ReturnToBabyActions';
 
@@ -19,22 +20,23 @@ function AddLog() {
 
 
     return (
-        <div className='container'>
-        <h1 className="top-header">With {babyInfo.baby_first_name}, I would like to add...</h1>
         <div>
-            <ul className="AddLogBtn-List">
-                {category.map((each ,i) =>{
-                    return <li key={i}>
-                                <button className="active">
-                                    <Link to="/logData" onClick={() => storeAction(each)}>{each}</Link>
-                                </button>
-                            </li>
-                })}
-           </ul>
-        </div>
-
-
-         <ReturnToBabyActions />
+            <div className='container'>
+                <h1 className="top-header">With {babyInfo.baby_first_name}, I would like to add...</h1>
+                <div>
+                    <ul className="AddLogBtn-List">
+                        {category.map((each ,i) =>{
+                            return <li key={i}>
+                                        <button className="active">
+                                            <Link to="/logData" onClick={() => storeAction(each)}>{each}</Link>
+                                        </button>
+                                    </li>
+                        })}
+                    </ul>
+                </div>
+                <ReturnToBabyActions />
+            </div>
+            <Footer />
         </div>
     )
 }
