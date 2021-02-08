@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import ReactModal from 'react-modal';
 import "./BabyList.css"
 import { deleteBaby, getBabyList, updateBaby } from "../Functions/babyFunctions"
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
+import {formatDate,parseDate,} from 'react-day-picker/moment';
 
 function BabyList(props) {
     const [list, setList] = useState([]);
@@ -63,10 +66,18 @@ function BabyList(props) {
         setIsOpen(false);
     }
 
-     // edit handling 
+    // edit handling 
      function updateBabyInfo(event){
         setEditBaby({... editBaby, [event.target.name] : event.target.value });
         console.log(editBaby)
+    }
+
+    //date handling
+    function DateofBirthChange(day){
+        let dayFormatted = day.toLocaleString().slice(0,10)
+        console.log(dayFormatted)
+        setEditBaby({... editBaby, dob : dayFormatted});
+
     }
 
     //submit baby info
@@ -139,8 +150,21 @@ function BabyList(props) {
                     <label>Last Name</label>
                     <input value={editBaby.baby_last_name || ""} name="baby_last_name" onChange={updateBabyInfo}></input>
                     <br/>
-                    <label>Date of Birth</label>
-                    <input value={editBaby.dob|| ""} name="dob" onChange={updateBabyInfo} ></input>
+                    <label>Date of Birth</label>                    
+                    <DayPickerInput
+                        format="M/D/YYYY"
+                        formatDate={formatDate}
+                        parseDate={parseDate} 
+                            refs='dob'
+                            className='form-control'
+                            name='dob'
+                            placeholder='Choose the birthday'
+                            value={editBaby.dob} 
+                            onDayChange={DateofBirthChange}
+                            dayPickerProps= {{
+                                todayButton: 'Today',
+                            }}
+                     />
                     <br/>
                     <label htmlFor="gender">Gender</label>
                     <select value={editBaby.gender} name="gender" onChange={updateBabyInfo}>
