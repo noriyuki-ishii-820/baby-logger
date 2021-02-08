@@ -29,3 +29,7 @@ table {
 .babyList-actions button {
     margin: 0 2px;
 }
+
+.babyListErrorMsg {
+    width: 80%;
+}

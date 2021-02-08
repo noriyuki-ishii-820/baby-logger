@@ -10,6 +10,7 @@ import {formatDate,parseDate,} from 'react-day-picker/moment';
 function BabyList(props) {
     const [list, setList] = useState([]);
     const [modalIsOpen,setIsOpen] = useState(false);
+    const [editError, setEditError] = useState(false);
     const [editBaby, setEditBaby] = useState([
         {
             baby_first_name: "",
@@ -91,6 +92,11 @@ function BabyList(props) {
             gender: editBaby.gender,
             tagNumber: editBaby.tagNumber,
             _id: editBaby._id
+        }
+
+        if (!babyData.baby_first_name || !babyData.baby_last_name || !babyData.dob || !babyData.dob){
+            setEditError(true)
+            return false
         }
         updateBaby(babyData)
         alert("Success!")
@@ -175,10 +181,16 @@ function BabyList(props) {
                     <br/>
                     <label>Tag Number</label>
                     <input value={editBaby.tagNumber|| ""} name="tagNumber" onChange={updateBabyInfo}></input>
-                    
+                    <br />
                     <button value={editBaby._id || ""} type='submit' className="edit-btn btn-sm active">Submit</button>
                     <button onClick={closeModal} className="delete-btn btn-sm active">close</button>
                 </form>
+                {editError ? 
+                <div className="ErrorDiv babyListErrorMsg">
+                    <h5>Error: please check that all fields are fulfilled  (Tag Number is optional)</h5>
+                </div>
+                :
+                null }
             </ReactModal>
         </div>
     )

@@ -28,5 +28,10 @@
     font:20px;
     color:red;
     padding:50px;
-    
+}
+
+.LogEditNotesInput {
+    width:50%;
+    height:80%;
+    margin-bottom:30px;
 }

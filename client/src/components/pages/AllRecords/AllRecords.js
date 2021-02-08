@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Link } from "react-router-dom";
 import { getLogs } from "../../Functions/logFunctions"
 import LogList from "../../LogList/LogList"
+import Footer from "../../Footer/Footer"
 import ReturnToBabyActions from '../../Return/ReturnToBabyActions'
 
 import "./AllRecords.css"
@@ -53,6 +54,7 @@ class AllRecords extends Component {
                     <LogList results={sortedList}/>    
                 </div>
                 <ReturnToBabyActions />
+                <Footer />
             </div>
         )
 }}

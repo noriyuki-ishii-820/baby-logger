@@ -158,8 +158,8 @@ function LogList(props) {
                     </select>
                     <br/>
                     <label>Notes</label>
-                    <input value={editLog.notes || ""} name="notes" onChange={updateEditLog}></input>
-            
+                    <textarea className="LogEditNotesInput" value={editLog.notes || ""} name="notes" onChange={updateEditLog} />
+                    <br />
                     <button value={editLog._id || ""} type='submit' className="edit-btn btn-sm active">Edit this Log</button>
                     <button onClick={closeModal} className="delete-btn btn-sm active">close</button>
                 </form>
