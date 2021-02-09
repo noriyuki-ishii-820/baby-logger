@@ -26,3 +26,21 @@
 .AddLogBtn-List li button a:hover {
     text-decoration:none;
 }
+
+.AddOwnCategoryDiv {
+    text-align:center
+}
+
+.AddOwnCategoryDiv button{
+    margin-bottom: 20px;
+    background-color: #B05D5D !important;
+    border:none;
+    color:white;
+    font-size:18px;
+}
+
+.AddOwnCategoryDiv div form input{
+    width: 20%;
+    height:40px;
+    margin-right:5px;
+}

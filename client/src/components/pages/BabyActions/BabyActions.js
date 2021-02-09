@@ -22,11 +22,11 @@ function BabyActions() {
                             <li>Tag Number: {babyInfo.tagNumber ? babyInfo.tagNumber : "N/A"}</li>
                         </ul>
                 <div>
-                <h3>Actions</h3>
-                    <div className="BabyActionsBtnDiv">
-                        <button className="btn-sm active baby-actions-view-btn"><Link to="/allRecords">View All Records</Link></button>
-                        <button className="btn-sm active baby-actions-add-btn"><Link to="/addLog">Add a new Log</Link></button>
-                    </div>
+                    <h3>Actions</h3>
+                        <div className="BabyActionsBtnDiv">
+                            <button className="btn-sm active baby-actions-view-btn"><Link to="/allRecords">View All Records</Link></button>
+                            <button className="btn-sm active baby-actions-add-btn"><Link to="/addLog">Add a new Log</Link></button>
+                        </div>
                 </div>
                 <Return />
             </div>

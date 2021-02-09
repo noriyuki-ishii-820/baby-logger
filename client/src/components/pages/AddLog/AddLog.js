@@ -103,16 +103,17 @@ function AddLog() {
                   
                     </ul>
                 </div>
-                <button onClick={()=> AddMyOwn()}>Add My Own Category</button>
-                        
-                {addMyOwn ? 
-                <div>
-                    <form noValidate onSubmit={Submit}>
-                        <input placeholder="Type the New Category..." onChange={(e) => onChange(e)}></input>
-                        <button type="submit">Submit</button>
-                    </form>
+                <div className="AddOwnCategoryDiv">
+                    <button className="btn-sm" onClick={()=> AddMyOwn()}>Add My Own Category</button>
+                    {addMyOwn ? 
+                    <div>
+                        <form noValidate onSubmit={Submit}>
+                            <input placeholder="Type the New Category..." onChange={(e) => onChange(e)}></input>
+                            <button type="submit" className="btn-sm">Add</button>
+                        </form>
+                    </div>
+                    : null}
                 </div>
-                : null}
                 <ReturnToBabyActions />
             </div>
             <Footer />

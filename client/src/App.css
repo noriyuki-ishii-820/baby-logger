@@ -1,6 +1,10 @@
 @import '~@fullcalendar/core/main.css';
 @import '~@fullcalendar/daygrid/main.css';
 
+body {
+    padding-bottom: 200px;
+}
+
 .top-header {
     text-align: center;
     margin:50px 0 !important;
