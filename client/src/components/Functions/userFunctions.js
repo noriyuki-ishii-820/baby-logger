@@ -9,7 +9,7 @@ export const registerUser = userData => {
         first_name: userData.first_name,
         last_name: userData.last_name,
         email: userData.email,
-        password: userData.password
+        password: userData.password,
     })
     .then(res => {
         console.log('Registered!');

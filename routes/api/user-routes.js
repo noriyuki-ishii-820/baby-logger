@@ -15,6 +15,8 @@ const User = require("../../models/User");
 router.use(cors())
 process.env.SECRET_KEY = 'secret';
 
+// routes
+
 router.post('/api/register', (req, res) => {
     // Form validation
     const { errors, isValid } = validateRegisterInput(req.body);

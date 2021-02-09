@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import ReactModal from 'react-modal';
-import {deleteLog, getLogs, updateLog} from "../Functions/logFunctions"
+import {deleteLog, getLogs, updateLog} from "../Functions/logFunctions";
+import {getCategory} from "../Functions/categoryFunctions"
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import { TimePicker } from 'antd';
 import moment from 'moment';
@@ -22,6 +23,14 @@ function LogList(props) {
         _id: ""
         }
     ]);
+    const [thisUserCategory, setThisUserCategory] = useState([]);
+    const userId = localStorage.getItem("userId")
+
+    useEffect(() => {
+        getCategory().then(data => {
+            const list = data.filter(result => result.parentUserId === userId);
+            setThisUserCategory(list)
+        })},[])
     
     useEffect(() => {
         return setList(props.results)
@@ -154,6 +163,9 @@ function LogList(props) {
                     <select value ={editLog.logCategory} name="logCategory" onChange={updateEditLog}>
                         {category.map((each, i) => {
                             return <option value={each} key={i}>{each}</option>
+                        })}
+                        {thisUserCategory.map((each,i)=>{
+                            return <option value={each.category} key={i}>{each.category}</option>
                         })}
                     </select>
                     <br/>

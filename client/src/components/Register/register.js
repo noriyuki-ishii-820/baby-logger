@@ -10,6 +10,7 @@ class Register extends Component {
             last_name: '',
             email: '',
             password: '',
+            image:'',
             errors: {},
             success: false,
         }
@@ -84,7 +85,7 @@ class Register extends Component {
             first_name: this.state.first_name,
             last_name: this.state.last_name,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
         }
         var result = this.handleValidation();
         console.log(result);
@@ -177,7 +178,7 @@ class Register extends Component {
                             </button>
                         </form>
                         {this.state.success ?
-                        <div>
+                        <div className="SuccessDiv">
                             <h4>Registration is successful. Please <Link to="/login">log-in</Link> now.</h4>
                         </div>
                         :
