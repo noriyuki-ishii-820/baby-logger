@@ -94,7 +94,7 @@ function AddLog() {
                             return <li key={i}>
                                         <button className="active">
                                             <Link to="/logData" onClick={() => storeActionArray(each)}>{each.category} </Link>
-                                            <span value={each._id} onClick={() => deleteCustomCategory(each)}>x</span>
+                                            <i className="fa fa-close deleteCategory" value={each._id} onClick={() => deleteCustomCategory(each)}></i>
                                         </button>
                                     </li>
                             })}
