@@ -1,11 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from "react-router-dom";
 import ReactModal from 'react-modal';
-import "./BabyList.css"
 import { deleteBaby, getBabyList, updateBaby } from "../Functions/babyFunctions"
 import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
 import {formatDate,parseDate,} from 'react-day-picker/moment';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
+import 'react-day-picker/lib/style.css';
+import "./BabyList.css"
+
+
 
 function BabyList(props) {
     const [list, setList] = useState([]);
@@ -30,6 +34,7 @@ function BabyList(props) {
     useEffect(() => {
         const thisUserBaby = props.results.filter(result => result.parentUserId === currentId);
         return setList(thisUserBaby)
+       
     },[props.results])
 
 
@@ -99,8 +104,11 @@ function BabyList(props) {
             return false
         }
         updateBaby(babyData)
-        alert("Success!")
-        window.location.reload(); 
+        NotificationManager.success('this page will auto-refresh.', 'Successlly editted');
+        setTimeout(() => {
+            window.location.reload()}, 1500); 
+        
+
     }
 
     return (
@@ -192,6 +200,7 @@ function BabyList(props) {
                 :
                 null }
             </ReactModal>
+            <NotificationContainer />
         </div>
     )
 }

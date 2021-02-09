@@ -5,6 +5,8 @@ import {getCategory} from "../Functions/categoryFunctions"
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import { TimePicker } from 'antd';
 import moment from 'moment';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
 import 'antd/dist/antd.css';
 import "./LogList.css"
 
@@ -81,7 +83,9 @@ function LogList(props) {
             _id: editLog._id,
         }
         updateLog(logData)
-        window.location.reload(); 
+        NotificationManager.success('this page will auto-refresh.', 'Successlly editted');
+        setTimeout(() => {
+            window.location.reload()}, 1500); 
     }
 
     // handle the delete button
@@ -176,7 +180,7 @@ function LogList(props) {
                     <button onClick={closeModal} className="delete-btn btn-sm active">close</button>
                 </form>
             </ReactModal>
-
+            <NotificationContainer />
         
         </div>
     )

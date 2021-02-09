@@ -3,9 +3,8 @@ import Footer from "../../Footer/Footer"
 import { Link } from "react-router-dom";
 import ReturnToBabyActions from '../../Return/ReturnToBabyActions';
 import { addNewCategory, getCategory, deleteCategory } from "../../Functions/categoryFunctions"
-
 import "./AddLog.css"
-import { List } from 'antd';
+
 
 //this page is where the user picks what category of log he/she wishes to add.
 
