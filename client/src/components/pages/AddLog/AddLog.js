@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import Footer from "../../Footer/Footer"
 import { Link } from "react-router-dom";
 import ReturnToBabyActions from '../../Return/ReturnToBabyActions';
-import { addNewCategory, getCategory } from "../../Functions/categoryFunctions"
+import { addNewCategory, getCategory, deleteCategory } from "../../Functions/categoryFunctions"
 
 import "./AddLog.css"
 import { List } from 'antd';
@@ -45,6 +45,14 @@ function AddLog() {
         setAddMyOwn(true)
     }
 
+    function deleteCustomCategory(e){ 
+        if(!window.confirm("Are you sure to delete this category?")){
+            return false 
+         }
+        deleteCategory(e._id)
+        window.location.reload();
+    }
+
     function Submit(e) {
         e.preventDefault();
 
@@ -85,7 +93,8 @@ function AddLog() {
                             {thisUserCategory.map((each, i) => {
                             return <li key={i}>
                                         <button className="active">
-                                            <Link to="/logData" onClick={() => storeActionArray(each)}>{each.category}</Link>
+                                            <Link to="/logData" onClick={() => storeActionArray(each)}>{each.category} </Link>
+                                            <span value={each._id} onClick={() => deleteCustomCategory(each)}>x</span>
                                         </button>
                                     </li>
                             })}

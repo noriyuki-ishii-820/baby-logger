@@ -31,3 +31,17 @@ export const getCategory = categoryData => {
     })
 }
 
+//delete a log
+
+export const deleteCategory = categoryId => {
+
+    return axios
+    .delete("/api/deleteCategory/" + categoryId, {
+    })
+    .then(response => {
+        return response.data
+    })
+    .catch(err => {
+        console.log(err);
+    })
+}
