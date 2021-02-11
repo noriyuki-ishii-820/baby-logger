@@ -3,14 +3,19 @@ import { Link, withRouter } from "react-router-dom";
 import "./navbar.css";
 
 class Navbar extends Component {
+
+    
+
     logOut(e) {
         e.preventDefault();
         localStorage.removeItem('usertoken');
         localStorage.removeItem('userId');
         localStorage.removeItem('babyClicked');
+        localStorage.removeItem("userFirstName")
         this.props.history.push('/');
     }
     render() {
+
         const loginRegLink = (
             <ul className='navbar-nav list-group '>
                 <li className="nav-item">

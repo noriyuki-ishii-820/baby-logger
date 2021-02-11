@@ -43,7 +43,7 @@ class Login extends Component {
             <div>
             <div className='container'>
                 <div className='row'>
-                    <div className='col-md-6 mt-5 mx-auto'>
+                    <div className='col-md-6 mt-5 mx-auto loginSignUpDiv'>
                         <form noValidate onSubmit={ this.onSubmit }>
                             <div className="pleaseSignIn">
                                 <h1 className='h3 mb-3 font-weight normal'>Welcome to Baby Logger!</h1>

@@ -21,6 +21,7 @@ class DashBoard extends Component {
     }
 
     componentDidMount() {
+  
         localStorage.removeItem("actionClicked")
         localStorage.removeItem('babyClicked');
         const token = localStorage.usertoken;
@@ -31,13 +32,13 @@ class DashBoard extends Component {
             email: decoded.email
         })
         getUserId(decoded.email);
-       
         
         getBabyList().then(data => {
             this.setState ({
                 babyset: data
             })
         })
+
     }
     
     render() {
