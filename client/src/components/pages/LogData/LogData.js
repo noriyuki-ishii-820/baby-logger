@@ -131,12 +131,8 @@ class LogData extends Component {
                                     />
                             </div>
 
-                            
-                            <div>
-                                <h4>add file uploads if time allows</h4>
-                            </div>
                             <div className="submitBtnDiv">
-                            <button type='submit' className="btn-sm active">Submit!</button>
+                                <button type='submit' className="btn-sm active">Submit!</button>
                             </div>
                         </form>
                     

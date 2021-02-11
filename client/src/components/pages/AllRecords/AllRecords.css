@@ -22,5 +22,10 @@
 }
 .AllRecordsSearchBtn button a:hover {
     text-decoration:none;
+}
 
+@media screen and (min-width: 400px) {
+    #searchBar {
+      width: 60% !important
+    }
 }

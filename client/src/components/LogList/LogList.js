@@ -83,7 +83,7 @@ function LogList(props) {
             _id: editLog._id,
         }
         updateLog(logData)
-        NotificationManager.success('this page will auto-refresh.', 'Successlly editted');
+        NotificationManager.success('this page will auto-refresh.', 'Successfully editted');
         setTimeout(() => {
             window.location.reload()}, 1500); 
     }
@@ -101,13 +101,13 @@ function LogList(props) {
     const category = ["Meal", "Nap", "Doctor's Appointment", "Vaccination"]
 
     //sorts the list in chronological order 
-    const sortedList = list.sort((a,b) => (a.date > b.date) ? 1 : -1)
+    const sortedList = list.sort((a,b) => (a.date < b.date) ? 1 : -1)
 
     //filter in the babies with the user's ID
     const filteredList = sortedList.filter(each => each.babyId === thisBabyId)
     
     return (
-        <div>
+        <div className="table-responsive-lg">
             <table className="table LogList">
                  <thead>
                      <tr>

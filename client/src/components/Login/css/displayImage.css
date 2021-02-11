@@ -2,12 +2,14 @@
     display:flex;
     justify-content: center;
     margin-bottom:20px;
+    width:100%;
 }
 
 .app-image {
     margin:auto;
-    height:300px;
+    width:60%;
     border-radius:30%;
     filter: drop-shadow(3px 3px  #001f3f);
     border:1px solid  #001f3f;
 }
+

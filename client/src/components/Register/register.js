@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Footer from "../Footer/Footer"
 import { Link } from "react-router-dom";
 import { registerUser, getUsers } from '../Functions/userFunctions';
 
@@ -185,6 +186,7 @@ class Register extends Component {
                         null}
                     </div>
                 </div>
+                <Footer />
             </div>
         )
     }

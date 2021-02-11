@@ -6,9 +6,13 @@
     background-color: #001f3f !important;
     height:30px;
     line-height:30px;
-    
 }
 
-.footer h6 {
-    color: #FFFFFF !important;
+.footer div a:hover{
+    text-decoration: none;
+}
+
+.footer div {
+
+    color:white !important;
 }

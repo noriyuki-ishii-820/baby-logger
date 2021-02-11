@@ -104,7 +104,7 @@ function BabyList(props) {
             return false
         }
         updateBaby(babyData)
-        NotificationManager.success('this page will auto-refresh.', 'Successlly editted');
+        NotificationManager.success('this page will auto-refresh.', 'Successfully editted');
         setTimeout(() => {
             window.location.reload()}, 1500); 
         
@@ -112,10 +112,8 @@ function BabyList(props) {
     }
 
     return (
-        <div>
-
-            <table className="table babyList">
-            
+        <div className="table-responsive-lg">
+            <table className="table babyList ">
                 <thead>
                     <tr>
                         {columns.map((each, i) => {

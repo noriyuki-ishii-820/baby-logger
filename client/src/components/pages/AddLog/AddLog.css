@@ -40,7 +40,7 @@
 }
 
 .AddOwnCategoryDiv div form input{
-    width: 20%;
+    width: 250px;
     height:40px;
     margin-right:5px;
 }
@@ -55,4 +55,10 @@
     background-color:red;
     border-radius:100%;
     padding:2.5px 4px;
+}
+
+@media screen and (max-width: 400px) {
+    .AddOwnCategoryDiv button {
+        margin-top: 20px;
+    }
 }
