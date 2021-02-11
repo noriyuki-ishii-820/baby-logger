@@ -11,6 +11,8 @@ import BabyActions from "./components/pages/BabyActions/BabyActions";
 import addLog from "./components/pages/AddLog/AddLog";
 import LogData from "./components/pages/LogData/LogData";
 import allRecords from "./components/pages/AllRecords/AllRecords"
+import resetPassword from "./components/Login/resetpassword"
+import resetPasswordPage from "./components/Login/resetPasswordPage"
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "antd/dist/antd.css";
@@ -36,6 +38,8 @@ class App extends Component {
                             <Route exact path="/addLog" component={addLog} />
                             <Route exact path="/LogData" component={LogData} />
                             <Route exact path="/allRecords" component={allRecords} />
+                            <Route exact path="/resetPassword" component={resetPassword} />
+                            <Route exact path="/reset/:token" component={resetPasswordPage} />
                         </div>
                     </div>
                 </Router>

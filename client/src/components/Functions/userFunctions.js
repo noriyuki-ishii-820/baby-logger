@@ -17,7 +17,7 @@ export const registerUser = userData => {
 }
 
 export const loginUser = userData => {
-    // console.log(userData);
+
     return axios
     .post('/api/login', {
         email: userData.email,
@@ -32,13 +32,12 @@ export const loginUser = userData => {
     })
 }
 
+//get all user data
 export const getUsers = userData => {
     return axios
     .get('/api/displayusers', {
     })
     .then(response => {
-        // console.log(response.data);
-        // console.log(userData);  
         return response.data
     })
     .catch(err => {

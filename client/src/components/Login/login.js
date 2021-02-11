@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Footer from "../Footer/Footer"
 import { loginUser } from '../Functions/userFunctions';
+import { Link } from "react-router-dom";
 import DisplayImage from "./displayImage"
 import "./css/login.css"
 
@@ -80,7 +81,11 @@ class Login extends Component {
                             <button type='submit' className='btn btn-lg btn-primary btn-block'>
                                 Sign in
                             </button>
+
                         </form>
+                        <Link to="/resetPassword">
+                                <div>forgot password?</div>
+                        </Link>
                     </div>
                 </div>
              
