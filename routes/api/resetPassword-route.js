@@ -1,5 +1,6 @@
 const crypto = require("crypto");
 const express = require("express");
+const bcrypt = require("bcryptjs");
 const router = express.Router();
 const nodemailer = require("nodemailer")
 const dotenv = require("dotenv");
@@ -63,6 +64,29 @@ router.post('/api/resetPassword', (req, res) => {
 
 router.get("/reset/:token", (req,res) => {
     return res.send(req.params.token)
+})
+
+router.put("/api/updateUser", (req, res) => {
+
+    const updateUserData = {
+        email: req.body.email,
+        password: req.body.password
+    }
+
+    bcrypt.hash(req.body.password, 10, (err, hash) => {
+        if (err) throw err;
+        updateUserData.password = hash
+
+    User.findOneAndUpdate({email:req.body.email}, updateUserData,
+        {new :true, upsert: true} )
+        .then(response => {
+            console.log("success")
+            res.json(response)
+        })
+        .catch(err => {
+            res.send('error: ' + err);
+        }) 
+    })
 })
 
 module.exports = router;

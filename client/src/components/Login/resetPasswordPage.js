@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom';
 import { getToken} from "../Functions/resetPasswordFunctions"
-import { getUsers} from "../Functions/userFunctions"
+import { getUsers, updateUser} from "../Functions/userFunctions"
 import Footer from "./../Footer/Footer"
+import {NotificationContainer, NotificationManager} from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
+
 
 // this is where the user actually resets the password;
 
@@ -13,12 +16,11 @@ function ResetPasswordPage() {
         password: "",
         confirmPassword: "",
         update: false,
-        isLoading: true,
-        error: false,
-        token: "",
+
     })
 
     useEffect(()=> {
+        console.log(token)
        getToken(token).then(data => {
            const userToken = data.data
            getUsers().then(data => {
@@ -39,16 +41,40 @@ function ResetPasswordPage() {
         const userData = {
             email: user.email,
             password: user.password,
-            confirmPassword: user.confirmPassword
         }
 
+        if (!user.email || !user.password || !user.confirmPassword){
+            NotificationManager.warning('Fields are empty or invalid input', 'please try again.', 3000);
+            return false
+        }
+
+        if (user.password !== user.confirmPassword){
+            NotificationManager.warning('Passwords are not the same.', 'please try again.', 3000);
+            return false
+        }
+
+        if (user.password.length < 6){
+            NotificationManager.warning('Password needs to be more than 6 characters.', 'please try again.', 3000);
+            return false
+        }
+
+        // email
+        const inputEmail = user.email;
+        const emailRegex = /^\w+([\.-]?\w+)*@[a-z]+([\.-]?[a-z]+)*(\.[a-z]{2,4})+$/;
+        const emailResult = emailRegex.test(inputEmail);
+        if (!emailResult) {
+            NotificationManager.warning('Email is not in the right format.', 'please try again.', 3000);
+            return false
+        }
+        else {}
+
+        updateUser(userData)
         console.log(userData)
 
     }
 
     function onChange(e){
         setUser({... user, [e.target.name]: e.target.value });
-        
     }
 
     return (
@@ -105,6 +131,7 @@ function ResetPasswordPage() {
             </div>
          
         </div>
+        <NotificationContainer />
         <Footer />
         </div>
     )

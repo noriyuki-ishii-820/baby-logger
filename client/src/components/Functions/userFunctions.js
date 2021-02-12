@@ -1,9 +1,8 @@
 import axios from 'axios';
 
-//change port
 
+//register a new user
 export const registerUser = userData => {
-    // console.log(userData);
     return axios
     .post('/api/register', {
         first_name: userData.first_name,
@@ -16,6 +15,7 @@ export const registerUser = userData => {
     })
 }
 
+// log in an user
 export const loginUser = userData => {
 
     return axios
@@ -43,4 +43,22 @@ export const getUsers = userData => {
     .catch(err => {
         console.log(err);
     })
+}
+
+// update a user info
+
+export const updateUser = updateUser => {
+
+    return axios
+    .put("/api/updateUser", {
+        email: updateUser.email,
+        password: updateUser.password
+    })
+    .then(response => {
+        return response.data
+    })
+    .catch(err => {
+        console.log(err);
+    })
+
 }
