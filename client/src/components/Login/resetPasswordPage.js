@@ -68,9 +68,14 @@ function ResetPasswordPage() {
         }
         else {}
 
-        updateUser(userData)
-        console.log(userData)
-
+        updateUser(userData).then(res => {
+        if(res) {
+            NotificationManager.info("Success! Please log-in.");
+        }
+        else {
+            NotificationManager.warning('Please try again.', 'Error: Something went wrong!', 3000);
+        }})
+ 
     }
 
     function onChange(e){
