@@ -39,7 +39,7 @@ class App extends Component {
                             <Route exact path="/LogData" component={LogData} />
                             <Route exact path="/allRecords" component={allRecords} />
                             <Route exact path="/resetPassword" component={resetPassword} />
-                            <Route exact path="/reset/:token" component={resetPasswordPage} />
+                            <Route exact path="/reset/page/:token" component={resetPasswordPage} />
                         </div>
                     </div>
                 </Router>

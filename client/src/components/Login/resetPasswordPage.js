@@ -24,14 +24,14 @@ function ResetPasswordPage() {
        getToken(token).then(data => {
            const userToken = data.data
            getUsers().then(data => {
+               console.log(data)
                const verifyToken = data.filter(each => each.resetPasswordToken === userToken)
-               console.log(verifyToken.length)
                if(verifyToken.length === 0){
                    alert("verification was not successful. please try again")
                } else if (verifyToken.length === 1) {
                    setUser({update:true})
                }
-           })
+         })
        })
     },[])
 

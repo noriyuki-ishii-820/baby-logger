@@ -48,7 +48,7 @@ router.post('/api/resetPassword', (req, res) => {
             `Hello ${req.body.first_name}, \n\n`
             + "Your are receiving this email because you have requested the reset of your password. \n\n"
             + "Please click on the following link to proceed: \n\n"
-            + `${host}/reset/${token} \n\n`
+            + `${host}/reset/page/${token} \n\n`
             + "If you have not requested this, please ignore. \n\n"
             + "Thank you! \n\n"
             + "Baby Logger Development Team. :) "
