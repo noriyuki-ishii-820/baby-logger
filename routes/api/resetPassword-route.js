@@ -38,15 +38,17 @@ router.post('/api/resetPassword', (req, res) => {
        
     }); 
 
+    const host = req.get('host')
+
     let mailDetails = { 
         from: 'baby.logger.app.info@gmail.com', 
-        to: "ishii.noriyuki.ni@gmail.com",
+        to: req.body.email,
         subject: 'Baby Logger: Link to Reset Password', 
         text: 
             `Hello ${req.body.first_name}, \n\n`
             + "Your are receiving this email because you have requested the reset of your password. \n\n"
             + "Please click on the following link to proceed: \n\n"
-            + `http://localhost:3000/reset/${token} \n\n`
+            + `${host}/reset/${token} \n\n`
             + "If you have not requested this, please ignore. \n\n"
             + "Thank you! \n\n"
             + "Baby Logger Development Team. :) "
