@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import DisplayImage from "./displayImage"
 import "./css/login.css"
 
+
 class Login extends Component {
     constructor() {
         super()
@@ -83,9 +84,11 @@ class Login extends Component {
                             </button>
 
                         </form>
-                        <Link to="/resetPassword">
-                                <div>forgot password?</div>
-                        </Link>
+                        <div className="forgotPasswordDiv">
+                            <Link to="/resetPassword">
+                                    <div>forgot password?</div>
+                            </Link>
+                        </div>
                     </div>
                 </div>
              
