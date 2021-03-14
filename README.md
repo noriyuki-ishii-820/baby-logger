@@ -15,7 +15,7 @@
 
 ## Description
 
-This application provides parents, medical experts or anyone having tough times with baby management. With the simple, straightforward and user-friendly UI, the user embraces the easy of baby information management. 
+This application provides the soluton to parents, medical experts or anyone having tough times with baby management. With the simple, straightforward and user-friendly UI, the user embraces the easy of baby information management. 
 
 ## Deployment
 
